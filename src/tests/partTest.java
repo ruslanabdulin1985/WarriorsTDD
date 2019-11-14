@@ -17,14 +17,6 @@ class partTest {
 	assertEquals(expected, actual);
 	}
 	
-	@Test
-	void testPartConstructor() {
-		Part p = new Part(10);
-		int expected = 10;
-		int actual = p.getHealth();
-		
-		assertEquals(expected, actual);
-	}
 		
 	@Test
 	void testHit() {
