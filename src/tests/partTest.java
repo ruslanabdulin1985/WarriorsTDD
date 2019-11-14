@@ -49,6 +49,7 @@ class partTest {
 	@Test
 	void testBlocked() {
 		Part p = new Part(20);
+		p.setBlock();
 		p.hit(10);
 		int expected = 20;
 		int actual = p.getHealth();
@@ -59,6 +60,7 @@ class partTest {
 	@Test
 	void testBlockCanceled() {
 		Part p = new Part(20);
+		p.setBlock();
 		p.hit(10);
 		p.hit(10);
 		int expected = 10;
