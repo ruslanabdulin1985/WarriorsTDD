@@ -1,7 +1,7 @@
 package model;
 
 public interface Character {
-	public boolean hit();
+	public boolean hit(int damage);
 	
-	public boolean strike();
+	public boolean strike(Character c, int damage);
 }
