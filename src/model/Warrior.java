@@ -34,37 +34,31 @@ public class Warrior implements Character {
 
 	@Override
 	public int getRightLeg() {
-		// TODO Auto-generated method stub
 		return this.rightLeg.getHealth();
 	}
 
 	@Override
 	public int getleftLeg() {
-		// TODO Auto-generated method stub
 		return this.leftLeg.getHealth();
 	}
 
 	@Override
 	public int getleftArm() {
-		// TODO Auto-generated method stub
 		return this.leftArm.getHealth();
 	}
 
 	@Override
 	public int getRightArm() {
-		// TODO Auto-generated method stub
 		return this.rightArm.getHealth();
 	}
 
 	@Override
 	public int getBody() {
-		// TODO Auto-generated method stub
 		return this.body.getHealth();
 	}
 
 	@Override
 	public int getHead() {
-		// TODO Auto-generated method stub
 		return this.head.getHealth();
 	}
 	

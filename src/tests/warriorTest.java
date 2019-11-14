@@ -103,7 +103,6 @@ class warriorTest {
 
 		public PartStub(int h) {
 			super(h);
-			// TODO Auto-generated constructor stub
 		}
 		
 		
