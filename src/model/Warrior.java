@@ -23,11 +23,49 @@ public class Warrior implements Character {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	
 
 	@Override
 	public boolean strike(Character c, int damage) {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public int getRightLeg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getleftLeg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getleftArm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getRightArm() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getBody() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getHead() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

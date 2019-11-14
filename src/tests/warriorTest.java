@@ -8,7 +8,57 @@ import model.Part;
 import model.Warrior;
 
 class warriorTest {
-
+	
+	@Test
+	void getRightHandTest() {
+		Warrior sut = new WarriorStub();
+		boolean actual = sut.hit(20);
+		assertTrue(actual);
+	}
+	
+	@Test
+	void getLeftHandTest() {
+		Warrior sut = new WarriorStub();
+		int actual = sut.getleftArm();
+		int expected = 10;
+		assertEquals(actual, expected);
+	}
+	
+	@Test
+	void getRightLegTest() {
+		Warrior sut = new WarriorStub();
+		int actual = sut.getRightArm();
+		int expected = 10;
+		assertEquals(actual, expected);
+	}
+	
+	@Test
+	void getLeftLegTest() {
+		Warrior sut = new WarriorStub();
+		int actual = sut.getleftLeg();
+		int expected = 10;
+		assertEquals(actual, expected);
+	}
+	
+	@Test
+	void getHeadTest() {
+		Warrior sut = new WarriorStub();
+		int actual = sut.getHead();
+		int expected = 10;
+		assertEquals(actual, expected);
+	}
+	
+	@Test
+	void getBodyTest() {
+		Warrior sut = new WarriorStub();
+		int actual = sut.getBody();
+		int expected = 10;
+		assertEquals(actual, expected);
+	}
+	
+	
+	
+	
 	@Test
 	void testHit() {
 		Warrior sut = new WarriorStub();
