@@ -21,13 +21,13 @@ public class Warrior implements Character {
 	@Override
 	public boolean hit(int damage) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean strike(Character c, int damage) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 }
