@@ -12,8 +12,9 @@ class warriorTest {
 	@Test
 	void getRightHandTest() {
 		Warrior sut = new WarriorStub();
-		boolean actual = sut.hit(20);
-		assertTrue(actual);
+		int actual = sut.getRightArm();
+		int expected = 10;
+		assertEquals(actual, expected);
 	}
 	
 	@Test
