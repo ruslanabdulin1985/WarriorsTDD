@@ -1,6 +1,10 @@
 package model;
 
+import java.util.Random;
+
 public class Warrior implements Character {
+	
+	boolean allive;
 	
 	protected Part rightLeg;
 	protected Part leftLeg;
@@ -16,15 +20,28 @@ public class Warrior implements Character {
 	this.rightArm = RArm;
 	this.body = Body;
 	this.head = Head;
+	this.allive = checkIfAllive();
+	}
+	
+	private boolean checkIfAllive() {
+		boolean toReturn = true;
+		Part [] parts = {head, body, leftArm, leftLeg, rightArm, rightLeg};
+		for (Part p : parts) {
+			if (p.getHealth()==0)
+				toReturn = false;
+		}
+		return toReturn;
 	}
 	
 	@Override
 	public boolean hit(int damage) {
-		// TODO Auto-generated method stub
+		Random rnd = new Random();
+		Part [] parts = {head, body, leftArm, leftLeg, rightArm, rightLeg};
+		parts[rnd.nextInt(6)].hit(damage);
+		this.allive = checkIfAllive();
+		
 		return true;
 	}
-	
-	
 
 	@Override
 	public boolean strike(Character c, int damage) {
@@ -63,8 +80,7 @@ public class Warrior implements Character {
 	}
 
 	public boolean isDead() {
-		// TODO Auto-generated method stub
-		return false;
+		return !allive;
 	}
 	
 }
