@@ -148,12 +148,14 @@ class warriorTest {
 	@Test 
 	void testStrike() {
 		Part sharedPart = mock(Part.class);
-		when(sharedPart.getHealth()).thenReturn(10);
+		Part enemyPart = mock(Part.class);
+		when(enemyPart.getHealth()).thenReturn(10);
 		
 		Warrior sut = new WarriorStub(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
-		Warrior enemy = new WarriorStubTrue(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
+		Warrior enemy = new Warrior(enemyPart, enemyPart, enemyPart, enemyPart, enemyPart,enemyPart);
 		boolean actual = sut.strike(enemy, 19);
 		assertTrue(actual);
+		verify(sharedPart, atLeastOnce()).hit(19);
 	}
     
 	//inner stub class 
