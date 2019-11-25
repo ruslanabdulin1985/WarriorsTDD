@@ -9,13 +9,13 @@ public class Warrior implements Character {
 	protected Part body;
 	protected Part head;
 	
-	public Warrior() {
-	this.rightLeg = new Part(20);
-	this.leftLeg = new Part(20);
-	this.leftArm = new Part(20);
-	this.rightArm = new Part(20);
-	this.body = new Part(20);
-	this.head = new Part(20);
+	public Warrior(Part Head, Part Body, Part RLeg, Part LLeg, Part RArm, Part LArm) {
+	this.rightLeg = RLeg;
+	this.leftLeg = LLeg;
+	this.leftArm = LArm;
+	this.rightArm = RArm;
+	this.body = Body;
+	this.head = Head;
 	}
 	
 	@Override
