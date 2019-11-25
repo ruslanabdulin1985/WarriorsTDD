@@ -2,7 +2,6 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import model.Part;
@@ -30,7 +29,6 @@ class warriorTest {
 
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
-		
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 
 		int actual = sut.getleftArm();
@@ -44,7 +42,6 @@ class warriorTest {
 		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
-		
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getRightArm();
 		int expected = 10;
@@ -58,7 +55,6 @@ class warriorTest {
 		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
-		
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getleftLeg();
 		int expected = 10;
@@ -71,7 +67,6 @@ class warriorTest {
 	void getHeadTest() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
-		
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getHead();
 		int expected = 10;
@@ -107,8 +102,7 @@ class warriorTest {
 	void testHitDamage() {
 		
 		Part sharedPart = mock(Part.class);
-		when(sharedPart.getHealth()).thenReturn(3);
-		
+		when(sharedPart.getHealth()).thenReturn(3);	
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
 
 		sut.hit(7);
@@ -142,9 +136,6 @@ class warriorTest {
 		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
-	
-	
-	
 	@Test 
 	void testStrike() {
 		Part sharedPart = mock(Part.class);
@@ -156,7 +147,7 @@ class warriorTest {
 		boolean actual = sut.strike(enemy, 19);
 		assertTrue(actual);
 		verify(enemyPart, atLeastOnce()).hit(19);
-		
+		verify(enemyPart, atMost(1)).hit(19);
 	}
     
 	//inner stub class 
