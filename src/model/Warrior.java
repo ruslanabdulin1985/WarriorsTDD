@@ -45,7 +45,7 @@ public class Warrior implements Character {
 
 	@Override
 	public boolean strike(Character c, int damage) {
-		// TODO Auto-generated method stub
+		c.hit(damage);
 		return true;
 	}
 

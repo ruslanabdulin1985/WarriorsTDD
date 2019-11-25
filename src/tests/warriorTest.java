@@ -155,7 +155,8 @@ class warriorTest {
 		Warrior enemy = new Warrior(enemyPart, enemyPart, enemyPart, enemyPart, enemyPart,enemyPart);
 		boolean actual = sut.strike(enemy, 19);
 		assertTrue(actual);
-		verify(sharedPart, atLeastOnce()).hit(19);
+		verify(enemyPart, atLeastOnce()).hit(19);
+		
 	}
     
 	//inner stub class 
