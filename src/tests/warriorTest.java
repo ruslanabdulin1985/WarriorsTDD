@@ -21,7 +21,7 @@ class warriorTest {
 		
 		int actual = sut.getRightArm();
 		int expected = 10;
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
@@ -35,7 +35,7 @@ class warriorTest {
 
 		int actual = sut.getleftArm();
 		int expected = 10;
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 	}
 	
 	
@@ -48,7 +48,7 @@ class warriorTest {
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getRightArm();
 		int expected = 10;
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 		verify(sharedPart, atLeastOnce()).getHealth();
 
 	}
@@ -62,23 +62,21 @@ class warriorTest {
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getleftLeg();
 		int expected = 10;
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 		verify(sharedPart, atLeastOnce()).getHealth();
 
 	}
 	
 	@Test
 	void getHeadTest() {
-		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getHead();
 		int expected = 10;
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 		verify(sharedPart, atLeastOnce()).getHealth();
-
 	}
 	
 	@Test
@@ -92,12 +90,11 @@ class warriorTest {
 		int expected = 10;
 		assertEquals(actual, expected);
 		verify(sharedPart, atLeastOnce()).getHealth();
-
 	}
 	
 	
 	@Test
-	void testHit() {
+	void testHitFact() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		
@@ -107,28 +104,58 @@ class warriorTest {
 	}
 	
 	@Test 
+	void testHitDamage() {
+		
+		Part sharedPart = mock(Part.class);
+		when(sharedPart.getHealth()).thenReturn(10);
+		
+		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
+
+		sut.hit(7);
+		int expected = 3;
+		int actual = sut.getHead();
+		assertEquals(expected, actual);
+	}
+	
+	@Test 
+	void testIfDead() {
+		Part sharedPart = mock(Part.class);
+		Part deadPart = mock(Part.class);
+		when(sharedPart.getHealth()).thenReturn(10);
+		when(deadPart.getHealth()).thenReturn(0);
+		
+		Warrior sut = new WarriorStub(sharedPart, deadPart, sharedPart, sharedPart, sharedPart,sharedPart);
+		boolean actual = sut.isDead();
+		assertTrue(actual);
+		verify(deadPart, atLeastOnce()).getHealth();
+	}
+	
+	@Test 
+	void testIfAllive() {
+		Part sharedPart = mock(Part.class);
+		Part deadPart = mock(Part.class);
+		when(sharedPart.getHealth()).thenReturn(10);
+		when(deadPart.getHealth()).thenReturn(0);
+		
+		Warrior sut = new WarriorStub(sharedPart, deadPart, sharedPart, sharedPart, sharedPart,sharedPart);
+		boolean actual = sut.isDead();
+		assertFalse(actual);
+		verify(deadPart, atLeastOnce()).getHealth();
+	}
+	
+	
+	
+	
+	@Test 
 	void testStrike() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		
-		
 		Warrior sut = new WarriorStub(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
-		Warrior enemy = new WarriorStub2(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
+		Warrior enemy = new WarriorStubTrue(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
 		boolean actual = sut.strike(enemy, 19);
 		assertTrue(actual);
-
 	}
-	
-
-	//@Test
-//	void  testMock() {
-//    Part random = mock(Part.class);
-//	}
-
-    
-//    Warrior war = new Warrior();	
-//		
-//	}
     
 	//inner stub class 
 	class WarriorStub extends Warrior{
@@ -139,9 +166,9 @@ class warriorTest {
 		
 	}
 		//inner class 
-	class WarriorStub2 extends Warrior{
+	class WarriorStubTrue extends Warrior{
 		
-		public WarriorStub2(Part Head, Part Body, Part RLeg, Part LLeg, Part RArm, Part LArm) {
+		public WarriorStubTrue(Part Head, Part Body, Part RLeg, Part LLeg, Part RArm, Part LArm) {
 			super(Head, Body, RLeg, LLeg, RArm, LArm);
 		}
 
@@ -149,10 +176,21 @@ class warriorTest {
 			return true;
 		}
 		
-		public boolean hit() {
+		public boolean hit(int a) {
 			return true;
 		}
 	}
+	
+
+	//inner class 
+	class WarriorStubHit extends Warrior{
+		
+		public WarriorStubHit(Part Head, Part Body, Part RLeg, Part LLeg, Part RArm, Part LArm) {
+			super(Head, Body, RLeg, LLeg, RArm, LArm);
+		}
+		
+	}
+	
 	
 	
 	//inner class 

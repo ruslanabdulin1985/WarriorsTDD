@@ -61,5 +61,10 @@ public class Warrior implements Character {
 	public int getHead() {
 		return this.head.getHealth();
 	}
+
+	public boolean isDead() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

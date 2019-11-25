@@ -29,6 +29,13 @@ class partTest {
 	}
 	
 	@Test
+	void testHitFact() {
+		Part p = new Part(20);
+		boolean actual = p.hit(12);
+		assertTrue(actual);
+	}
+	
+	@Test
 	void testHitOverkill() {
 		Part p = new Part(20);
 		p.hit(22);
