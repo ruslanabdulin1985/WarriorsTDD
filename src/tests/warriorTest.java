@@ -102,15 +102,13 @@ class warriorTest {
 	
 	@Test
 	void bockCanceled() {
-		Part sharedPart1 = mock(Part.class);
-		Part sharedPart2 = mock(Part.class);
+		Part sharedPart = mock(Part.class);
 		
-		Warrior sut = new Warrior(sharedPart1, sharedPart2, sharedPart1, sharedPart2, sharedPart1,sharedPart2 );
-		sut.block(sharedPart1, sharedPart2);
+		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
+		sut.block(sharedPart, sharedPart);
 		sut.hit(10);
 		
-		verify(sharedPart1, atLeastOnce()).cancelBlock();
-		verify(sharedPart2, atLeastOnce()).cancelBlock();
+		verify(sharedPart, atLeast(6)).cancelBlock();
 	}
 	
 	
