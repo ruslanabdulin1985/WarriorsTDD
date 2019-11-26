@@ -34,10 +34,15 @@ public class Warrior implements Character {
 		return toReturn;
 	}
 	
+	public Part getRandomPart() {
+		Random rnd = new Random();
+		return parts[rnd.nextInt(6)];
+	}
+	
+	
 	@Override
 	public boolean hit(int damage) {
-		Random rnd = new Random();
-		parts[rnd.nextInt(6)].hit(damage);
+		getRandomPart().hit(damage);
 		this.allive = checkIfAllive();
 		cacelBlock();
 		return true;

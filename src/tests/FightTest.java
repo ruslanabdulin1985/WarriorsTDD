@@ -28,10 +28,11 @@ public class FightTest {
 		Fight sut = new Fight(warrior, enemy);
 		sut.atack();
 		
-		verify(enemy, atLeast(1)).hit(10);
-		verify(enemy, atMost(1)).hit(10);
+		verify(warrior, atLeast(1)).strike(enemy, 5);
+		verify(warrior, atMost(1)).strike(enemy, 5);
 	}
 	
+	@Test
 	void deffendTest() {	
 		Warrior enemy = mock(Warrior.class);
 		Warrior warrior = mock(Warrior.class);
@@ -39,10 +40,11 @@ public class FightTest {
 		Fight sut = new Fight(warrior, enemy);
 		sut.defend();
 		
-		verify(warrior, atLeast(1)).hit(10);
-		verify(warrior, atMost(1)).hit(10);
+		verify(enemy, atLeast(1)).strike(warrior, 5);
+		verify(enemy, atMost(1)).strike(warrior, 5);
 	}
 	
+	@Test
 	void setBlockTest() {
 		Part somePart1 = mock(Part.class);
 		Part somePart2 = mock(Part.class);
@@ -51,7 +53,7 @@ public class FightTest {
 		Warrior warrior = mock(Warrior.class);
 		
 		Fight sut = new Fight(warrior, enemy);
-		sut.setBlockWarrior();
+		sut.setBlockWarrior(somePart1, somePart2);
 		
 		verify(warrior, atLeast(1)).block(somePart1, somePart2);
 		verify(warrior, atMost(1)).block(somePart1, somePart2);

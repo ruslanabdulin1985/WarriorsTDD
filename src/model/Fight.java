@@ -1,29 +1,30 @@
 package model;
 
 public class Fight {
+	
+	Warrior player;
+	Warrior enemy; 
 
-	public Fight(Warrior warrior, Warrior enemy) {
-		// TODO Auto-generated constructor stub
+	
+	public Fight(Warrior p_warrior, Warrior e_warrior) {
+		this.player = p_warrior;
+		this.enemy = e_warrior;
 	}
 
 	public void defend() {
-		// TODO Auto-generated method stub
-		
+		this.enemy.strike(this.player, 5);
 	}
 
 	public void atack() {
-		// TODO Auto-generated method stub
-		
+		this.player.strike(enemy, 5);
 	}
 
-	public void setBlockWarrior() {
-		// TODO Auto-generated method stub
-		
+	public void setBlockWarrior(Part part1, Part part2) {
+		this.player.block(part1, part2);
 	}
 	
 	public void setBlockEnemy() {
-		// TODO Auto-generated method stub
-		
+		this.enemy.block(enemy.getRandomPart(), enemy.getRandomPart());
 	}
 
 }
