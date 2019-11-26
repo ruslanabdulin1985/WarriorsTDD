@@ -5,7 +5,7 @@ import java.util.Random;
 public class Warrior implements Character {
 	
 	boolean allive;
-	
+	Part [] parts;
 	protected Part rightLeg;
 	protected Part leftLeg;
 	protected Part leftArm;
@@ -20,12 +20,13 @@ public class Warrior implements Character {
 	this.rightArm = RArm;
 	this.body = Body;
 	this.head = Head;
+	Part[] ToBeparts = {head, body, leftArm, leftLeg, rightArm, rightLeg};
+	parts = ToBeparts;
 	this.allive = checkIfAllive();
 	}
 	
 	private boolean checkIfAllive() {
 		boolean toReturn = true;
-		Part [] parts = {head, body, leftArm, leftLeg, rightArm, rightLeg};
 		for (Part p : parts) {
 			if (p.getHealth()==0)
 				toReturn = false;
@@ -36,10 +37,16 @@ public class Warrior implements Character {
 	@Override
 	public boolean hit(int damage) {
 		Random rnd = new Random();
-		Part [] parts = {head, body, leftArm, leftLeg, rightArm, rightLeg};
 		parts[rnd.nextInt(6)].hit(damage);
 		this.allive = checkIfAllive();
+		cacelBlock();
 		return true;
+		
+	}
+
+	private void cacelBlock() {
+		for (Part p : parts)
+			p.cancelBlock();
 	}
 
 	@Override
