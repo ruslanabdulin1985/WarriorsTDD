@@ -4,6 +4,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import javax.sound.sampled.AudioFileFormat.Type;
 
@@ -45,7 +46,7 @@ public class FightTest {
 	}
 	
 	@Test
-	void setBlockTest() {
+	void setBlockTestPlayer() {
 		Part somePart1 = mock(Part.class);
 		Part somePart2 = mock(Part.class);
 		
@@ -58,10 +59,27 @@ public class FightTest {
 		verify(warrior, atLeast(1)).block(somePart1, somePart2);
 		verify(warrior, atMost(1)).block(somePart1, somePart2);
 	
-		sut.setBlockEnemy();
-
-		verify(enemy, atLeast(1)).block(somePart1, somePart2);
-		verify(enemy, atMost(1)).block(somePart1, somePart2);
+//		sut.setBlockEnemy();
+//
+//		verify(enemy, atLeast(1)).block(somePart1, somePart2);
+//		verify(enemy, atMost(1)).block(somePart1, somePart2);
 	}
 	
+	@Test
+	void setBlockTestEnemy() {
+		Part somePart1 = mock(Part.class);
+		Part somePart2 = mock(Part.class);
+		
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		
+		when(enemy.getRandomPart()).thenReturn(somePart1);
+		
+		Fight sut = new Fight(warrior, enemy);
+		sut.setBlockEnemy();
+
+		verify(enemy, atLeast(1)).block(somePart1, somePart1);
+		verify(enemy, atMost(1)).block(somePart1, somePart1);
+	
+	}
 }
