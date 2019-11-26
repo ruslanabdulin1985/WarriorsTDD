@@ -82,5 +82,10 @@ public class Warrior implements Character {
 	public boolean isDead() {
 		return !allive;
 	}
+
+	public void block(Part sharedPart, Part sharedPart2) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

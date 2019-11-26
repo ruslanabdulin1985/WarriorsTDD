@@ -86,6 +86,16 @@ class warriorTest {
 		assertEquals(actual, expected);
 		verify(sharedPart, atLeastOnce()).getHealth();
 	}
+	@Test
+	void blockTest() {
+		Part sharedPart = mock(Part.class);
+		
+		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
+		sut.block(sharedPart, sharedPart);
+		sut.hit(10);
+		
+		verify(sharedPart, never()).hit(10);
+	}
 	
 	
 	@Test
