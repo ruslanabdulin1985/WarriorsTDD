@@ -39,7 +39,6 @@ public class Warrior implements Character {
 		Part [] parts = {head, body, leftArm, leftLeg, rightArm, rightLeg};
 		parts[rnd.nextInt(6)].hit(damage);
 		this.allive = checkIfAllive();
-		
 		return true;
 	}
 
@@ -83,9 +82,9 @@ public class Warrior implements Character {
 		return !allive;
 	}
 
-	public void block(Part sharedPart, Part sharedPart2) {
-		// TODO Auto-generated method stub
-		
+	public void block(Part part1, Part part2) {
+		part1.setBlock();
+		part2.setBlock();
 	}
 	
 }

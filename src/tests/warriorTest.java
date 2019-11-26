@@ -88,13 +88,15 @@ class warriorTest {
 	}
 	@Test
 	void blockTest() {
-		Part sharedPart = mock(Part.class);
+		Part sharedPart1 = mock(Part.class);
+		Part sharedPart2 = mock(Part.class);
 		
-		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
-		sut.block(sharedPart, sharedPart);
+		Warrior sut = new Warrior(sharedPart1, sharedPart2, sharedPart1, sharedPart2, sharedPart1,sharedPart2 );
+		sut.block(sharedPart1, sharedPart2);
 		sut.hit(10);
 		
-		verify(sharedPart, never()).hit(10);
+		verify(sharedPart1, atLeastOnce()).setBlock();
+		verify(sharedPart2, atLeastOnce()).setBlock();
 	}
 	
 	

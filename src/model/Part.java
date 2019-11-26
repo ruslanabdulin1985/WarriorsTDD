@@ -17,6 +17,7 @@ public class Part {
 			this.health = 0;
 			return true;
 		}
+		
 		else {
 			this.blocked = false;
 			return false;
