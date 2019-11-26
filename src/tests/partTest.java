@@ -61,6 +61,7 @@ class partTest {
 		Part p = new Part(20);
 		p.setBlock();
 		p.hit(10);
+		p.cancelBlock();
 		p.hit(10);
 		int expected = 10;
 		int actual = p.getHealth();

@@ -30,6 +30,11 @@ public class Part {
 	public void setBlock() {
 		this.blocked = true;
 	}
+
+	public void cancelBlock() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
