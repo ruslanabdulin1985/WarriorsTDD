@@ -19,10 +19,8 @@ public class Part {
 		}
 		
 		else {
-			this.blocked = false;
 			return false;
-		}
-			
+		}	
 	}
 	
 	public int getHealth() {
