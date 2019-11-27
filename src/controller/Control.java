@@ -44,6 +44,7 @@ public class Control {
 			
 			game.atack();
 			game.defend();
+			con.renew();
 		}
 		
 	}

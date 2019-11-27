@@ -129,6 +129,7 @@ public class FightTest {
 		
 		assertFalse(actual);
 	}
+
 	
 	@Test
 	void whenPlayerIsAlliveAndEnemyIsDeadThenIsPlayerWinReturnsTrue() {

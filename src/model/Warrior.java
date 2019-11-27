@@ -2,7 +2,7 @@ package model;
 
 import java.util.Random;
 
-public class Warrior implements Character {
+public class Warrior{
 	
 	boolean allive;
 	Part [] parts;
@@ -39,8 +39,7 @@ public class Warrior implements Character {
 		return parts[rnd.nextInt(6)];
 	}
 	
-	
-	@Override
+
 	public boolean hit(int damage) {
 		getRandomPart().hit(damage);
 		this.allive = checkIfAllive();
@@ -54,38 +53,38 @@ public class Warrior implements Character {
 			p.cancelBlock();
 	}
 
-	@Override
-	public boolean strike(Character c, int damage) {
+	
+	public boolean strike(Warrior c, int damage) {
 		c.hit(damage);
 		return true;
 	}
 
-	@Override
+	
 	public int getRightLeg() {
 		return this.rightLeg.getHealth();
 	}
 
-	@Override
+	
 	public int getleftLeg() {
 		return this.leftLeg.getHealth();
 	}
 
-	@Override
+	
 	public int getleftArm() {
 		return this.leftArm.getHealth();
 	}
 
-	@Override
+	
 	public int getRightArm() {
 		return this.rightArm.getHealth();
 	}
 
-	@Override
+	
 	public int getBody() {
 		return this.body.getHealth();
 	}
 
-	@Override
+	
 	public int getHead() {
 		return this.head.getHealth();
 	}

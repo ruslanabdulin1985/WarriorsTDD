@@ -19,4 +19,9 @@ public class Console {
 		return null;
 	}
 
+	public void renew() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
