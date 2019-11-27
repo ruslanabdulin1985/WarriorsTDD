@@ -34,4 +34,8 @@ public class Fight {
 		return (this.enemy.isDead() && !this.player.isDead());
 	}
 
+	public void quit() {
+		
+	}
+
 }

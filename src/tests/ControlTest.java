@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import controller.Control;
 import controller.Control.statuses;
 import model.Fight;
+import model.Part;
 import model.Warrior;
 import view.Console;
 
@@ -53,6 +54,69 @@ public class ControlTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	void whenStatusActionThenAttack() {
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		Control sut = new Control();
+		
+		sut.setStatus(statuses.action);
+		sut.run(game, con);
+		
+		verify(game).atack();
+	}
+	
+	@Test
+	void whenStatusActionThenDefend() {
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		Control sut = new Control();
+		
+		sut.setStatus(statuses.action);
+		sut.run(game, con);
+		
+		verify(game).defend();
+	}
+	
+	@Test
+	void whenStatusActionThenEnemyDefend() {
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		Control sut = new Control();
+		
+		sut.setStatus(statuses.action);
+		sut.run(game, con);
+		
+		verify(game).setBlockEnemy();
+	}
+	
+	@Test
+	void whenStatusActionAndDefendPartsSetThenDefend() {
+		Part somePart = mock(Part.class);
+		Part[] partsToReturn = {somePart, somePart};
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		when(con.getDefendParts()).thenReturn(partsToReturn);
+		Control sut = new Control();
+		
+		sut.setStatus(statuses.action);
+		sut.run(game, con);
+		
+		verify(game).setBlockWarrior(somePart, somePart);
+	}
+	
+	@Test
+	void whenWantsToQuitThenQuit() {
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		when(con.wantsToQuit()).thenReturn(true);
+		Control sut = new Control();
+		
+		sut.run(game, con);
+		sut.setStatus(statuses.action);
+		
+		verify(game).quit();
+	}
 	
 	class ControlStub extends Control{
 		public ControlStub(){
