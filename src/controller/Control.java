@@ -5,29 +5,32 @@ import view.Console;
 
 public class Control {
 	
+	statuses status;
 	
 	public enum statuses{
 		mainMenu, action, 
 	}
 	
+	
 	public Control() {
-		
-		// TODO Auto-generated constructor stub
+		status = statuses.mainMenu;
 	}
 
-	public void setStatus(statuses mainmenu) {
+	public void setStatus(statuses st) {
 		
-		// TODO Auto-generated method stub
+		this.status = st;
 		
 	}
 
 	public statuses getStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.status;
 	}
 
 	public void run(Fight game, Console con) {
-		// TODO Auto-generated method stub
+		if (status.equals(statuses.mainMenu) && con.wantsToPlay()) {
+			this.status = statuses.action;
+			
+		}
 		
 	}
 

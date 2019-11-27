@@ -2,9 +2,9 @@ package view;
 
 public class Console {
 
-	public Object wantsToPlay() {
+	public boolean wantsToPlay() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }
