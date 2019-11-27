@@ -102,6 +102,7 @@ public class FightTest {
 		assertTrue(actual);
 	}
 	
+	@Test
 	void whenEnemyIsAliveAndPlayerIsAlliveThenIsGameOverReturnFalse() {
 		Warrior enemy = mock(Warrior.class);
 		Warrior warrior = mock(Warrior.class);
@@ -121,12 +122,27 @@ public class FightTest {
 		Warrior enemy = mock(Warrior.class);
 		Warrior warrior = mock(Warrior.class);
 		
-		when(enemy.isDead()).thenReturn(true);
+		when(warrior.isDead()).thenReturn(true);
 		
 		Fight sut = new Fight(warrior, enemy);
 		
 		boolean actual = sut.isPlayerWin();
 		
 		assertFalse(actual);
+	}
+	
+	@Test
+	void whenPlayerIsAlliveAndEnemyIsDeadThenIsPlayerWinReturnsTrue() {
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		
+		when(warrior.isDead()).thenReturn(false);
+		when(enemy.isDead()).thenReturn(false);
+		
+		Fight sut = new Fight(warrior, enemy);
+		
+		boolean actual = sut.isPlayerWin();
+		
+		assertTrue(actual);
 	}
 }
