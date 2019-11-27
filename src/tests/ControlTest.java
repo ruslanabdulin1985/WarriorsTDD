@@ -56,10 +56,13 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionThenAttack() {
+		Part somePart = mock(Part.class);
+		Part[] partsToReturn = {somePart, somePart};
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		Control sut = new Control();
-		
+		when(con.getDefendParts()).thenReturn(partsToReturn);
+
 		sut.setStatus(statuses.action);
 		sut.run(game, con);
 		
@@ -68,10 +71,12 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionThenDefend() {
+		Part somePart = mock(Part.class);
+		Part[] partsToReturn = {somePart, somePart};
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		Control sut = new Control();
-		
+		when(con.getDefendParts()).thenReturn(partsToReturn);
 		sut.setStatus(statuses.action);
 		sut.run(game, con);
 		
@@ -80,9 +85,12 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionThenEnemyDefend() {
+		Part somePart = mock(Part.class);
+		Part[] partsToReturn = {somePart, somePart};
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		Control sut = new Control();
+		when(con.getDefendParts()).thenReturn(partsToReturn);
 		
 		sut.setStatus(statuses.action);
 		sut.run(game, con);

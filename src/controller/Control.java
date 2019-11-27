@@ -1,6 +1,7 @@
 package controller;
 
 import model.Fight;
+import model.Part;
 import view.Console;
 
 public class Control {
@@ -30,6 +31,16 @@ public class Control {
 		if (status.equals(statuses.mainMenu) && con.wantsToPlay()) {
 			this.status = statuses.action;
 			
+		}
+		
+		else if(status.equals(statuses.action)) {
+			Part[] partsToBlock = con.getDefendParts();
+			
+			game.setBlockWarrior(partsToBlock[0], partsToBlock[1]);
+			game.setBlockEnemy();
+			
+			game.atack();
+			game.defend();
 		}
 		
 	}
