@@ -72,4 +72,61 @@ public class FightTest {
 
 		verify(enemy).block(somePart1, somePart1);
 	}
+	
+	@Test
+	void whenPlayerIsDeadThenGameOverReturnsTrue() {
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		
+		when(warrior.isDead()).thenReturn(true);
+		
+		Fight sut = new Fight(warrior, enemy);
+		
+		boolean actual = sut.isGameOver();
+		
+		assertTrue(actual);
+	}
+	
+	
+	@Test
+	void whenEnemyIsDeadThenIsGameOverReturnTrue() {
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		
+		when(enemy.isDead()).thenReturn(true);
+		
+		Fight sut = new Fight(warrior, enemy);
+		
+		boolean actual = sut.isGameOver();
+		
+		assertTrue(actual);
+	}
+	
+	void whenEnemyIsAliveAndPlayerIsAlliveThenIsGameOverReturnFalse() {
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		
+		when(enemy.isDead()).thenReturn(false);
+		when(warrior.isDead()).thenReturn(false);
+		
+		Fight sut = new Fight(warrior, enemy);
+		
+		boolean actual = sut.isGameOver();
+		
+		assertFalse(actual);
+	}
+	
+	@Test
+	void whenPlayerIsDeadThenIsPlayerWinReturnsFalse() {
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		
+		when(enemy.isDead()).thenReturn(true);
+		
+		Fight sut = new Fight(warrior, enemy);
+		
+		boolean actual = sut.isGameOver();
+		
+		assertFalse(actual);
+	}
 }

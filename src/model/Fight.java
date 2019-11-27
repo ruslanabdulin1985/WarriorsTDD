@@ -27,4 +27,9 @@ public class Fight {
 		this.enemy.block(enemy.getRandomPart(), enemy.getRandomPart());
 	}
 
+	public boolean isGameOver() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
