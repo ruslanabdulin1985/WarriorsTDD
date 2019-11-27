@@ -125,7 +125,7 @@ public class FightTest {
 		
 		Fight sut = new Fight(warrior, enemy);
 		
-		boolean actual = sut.isGameOver();
+		boolean actual = sut.isPlayerWin();
 		
 		assertFalse(actual);
 	}

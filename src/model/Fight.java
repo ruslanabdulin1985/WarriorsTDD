@@ -28,7 +28,11 @@ public class Fight {
 	}
 
 	public boolean isGameOver() {
-		// TODO Auto-generated method stub
+		return (this.enemy.isDead() || this.player.isDead());
+	}
+
+	public boolean isPlayerWin() {
+		
 		return false;
 	}
 
