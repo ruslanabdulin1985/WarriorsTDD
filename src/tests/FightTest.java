@@ -6,7 +6,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import javax.sound.sampled.AudioFileFormat.Type;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.verification.AtMost;
