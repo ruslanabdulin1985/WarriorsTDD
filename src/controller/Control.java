@@ -28,9 +28,12 @@ public class Control {
 	}
 
 	public void run(Fight game, Console con) {
-		if (status.equals(statuses.mainMenu) && con.wantsToPlay()) {
+		if (con.wantsToQuit()) {
+			game.quit();
+		}
+		
+		else if (status.equals(statuses.mainMenu) && con.wantsToPlay()) {
 			this.status = statuses.action;
-			
 		}
 		
 		else if(status.equals(statuses.action)) {
