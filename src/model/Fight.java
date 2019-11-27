@@ -32,8 +32,7 @@ public class Fight {
 	}
 
 	public boolean isPlayerWin() {
-		
-		return false;
+		return (this.enemy.isDead() && !this.player.isDead());
 	}
 
 }

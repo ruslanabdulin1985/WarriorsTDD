@@ -137,7 +137,7 @@ public class FightTest {
 		Warrior warrior = mock(Warrior.class);
 		
 		when(warrior.isDead()).thenReturn(false);
-		when(enemy.isDead()).thenReturn(false);
+		when(enemy.isDead()).thenReturn(true);
 		
 		Fight sut = new Fight(warrior, enemy);
 		
