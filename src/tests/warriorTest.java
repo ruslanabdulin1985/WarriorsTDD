@@ -13,7 +13,7 @@ class warriorTest {
    
     
 	@Test
-	void getRightHandTest() {
+	void whenGetRightHandThanReturn10() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
@@ -21,11 +21,10 @@ class warriorTest {
 		int actual = sut.getRightArm();
 		int expected = 10;
 		assertEquals(expected, actual);
-		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
 	@Test
-	void getLeftHandTest() {
+	void whenGetLeftHandThanReturn10() {
 
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
@@ -38,7 +37,7 @@ class warriorTest {
 	
 	
 	@Test
-	void getRightLegTest() {
+	void whenGetRightLegThanReturn10() {
 		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
@@ -46,12 +45,11 @@ class warriorTest {
 		int actual = sut.getRightArm();
 		int expected = 10;
 		assertEquals(expected, actual);
-		verify(sharedPart, atLeastOnce()).getHealth();
 
 	}
 	
 	@Test
-	void getLeftLegTest() {
+	void whenGetLeftLegThanReturn10() {
 		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
@@ -59,23 +57,21 @@ class warriorTest {
 		int actual = sut.getleftLeg();
 		int expected = 10;
 		assertEquals(expected, actual);
-		verify(sharedPart, atLeastOnce()).getHealth();
 
 	}
 	
 	@Test
-	void getHeadTest() {
+	void whenGetHeadThenReturns10() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
 		int actual = sut.getHead();
 		int expected = 10;
 		assertEquals(expected, actual);
-		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
 	@Test
-	void getBodyTest() {
+	void whenGetBodyThenReturns10() {
 		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
@@ -84,11 +80,10 @@ class warriorTest {
 		int actual = sut.getBody();
 		int expected = 10;
 		assertEquals(actual, expected);
-		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
 	@Test
-	void blockTest() {
+	void whenBlockedSetBlockIsRun() {
 		Part sharedPart1 = mock(Part.class);
 		Part sharedPart2 = mock(Part.class);
 		
@@ -96,12 +91,11 @@ class warriorTest {
 		sut.block(sharedPart1, sharedPart2);
 		sut.hit(10);
 		
-		verify(sharedPart1, atLeastOnce()).setBlock();
-		verify(sharedPart2, atLeastOnce()).setBlock();
+		verify(sharedPart1).setBlock();
 	}
 	
 	@Test
-	void bockCanceled() {
+	void whenHitAllBlocksCanceled() {
 		Part sharedPart = mock(Part.class);
 		
 		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart );
@@ -113,7 +107,7 @@ class warriorTest {
 	
 	
 	@Test
-	void testHitFact() {
+	void whenHitThenReturnTrue() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		
@@ -123,7 +117,7 @@ class warriorTest {
 	}
 	
 	@Test 
-	void testHitDamage() {
+	void whenHitThanHeadIsHit() {
 		
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(3);	
@@ -133,11 +127,10 @@ class warriorTest {
 		int expected = 3;
 		int actual = sut.getHead();
 		assertEquals(expected, actual);
-		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
 	@Test 
-	void testIfDead() {
+	void whenIsDeadThenReturnsTrue() {
 		Part sharedPart = mock(Part.class);
 		Part deadPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
@@ -146,22 +139,20 @@ class warriorTest {
 		Warrior sut = new WarriorStub(sharedPart, deadPart, sharedPart, sharedPart, sharedPart,sharedPart);
 		boolean actual = sut.isDead();
 		assertTrue(actual);
-		verify(deadPart, atLeastOnce()).getHealth();
 	}
 	
 	@Test 
-	void testIfAllive() {
+	void whenAlliveThenReturnsFalse() {
 		Part sharedPart = mock(Part.class);
 		when(sharedPart.getHealth()).thenReturn(10);
 		
 		Warrior sut = new WarriorStub(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart,sharedPart);
 		boolean actual = sut.isDead();
 		assertFalse(actual);
-		verify(sharedPart, atLeastOnce()).getHealth();
 	}
 	
 	@Test 
-	void testStrike() {
+	void whenStrikeThanHit() {
 		Part sharedPart = mock(Part.class);
 		Part enemyPart = mock(Part.class);
 		when(enemyPart.getHealth()).thenReturn(10);
@@ -170,8 +161,7 @@ class warriorTest {
 		Warrior enemy = new Warrior(enemyPart, enemyPart, enemyPart, enemyPart, enemyPart,enemyPart);
 		boolean actual = sut.strike(enemy, 19);
 		assertTrue(actual);
-		verify(enemyPart, atLeastOnce()).hit(19);
-		verify(enemyPart, atMost(1)).hit(19);
+		verify(enemyPart).hit(19);
 	}
     
 	//inner stub class 
@@ -207,7 +197,6 @@ class warriorTest {
 		}
 		
 	}
-	
 	
 	
 	//inner class 
