@@ -5,7 +5,6 @@ public class Fight {
 	Warrior player;
 	Warrior enemy; 
 
-	
 	public Fight(Warrior p_warrior, Warrior e_warrior) {
 		this.player = p_warrior;
 		this.enemy = e_warrior;
