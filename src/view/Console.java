@@ -14,15 +14,15 @@ public class Console {
 	}
 	
 	public boolean wantsToPlay(String str) {
-		return false;
+		return str.equals("p");
 	}
 
 	public boolean wantsToQuit(String str) {
-		return false;
+		return str.equals("q");
 	}
 
 	public partsNames[] getDefendParts() {
-		partsNames parts[] = {partsNames.head, partsNames.body};
+		partsNames parts[] = {partToDefend(getInput()), partToDefend(getInput())};
 		return parts;
 	}
 
@@ -41,9 +41,21 @@ public class Console {
 		System.out.println("Enter p to Play");
 	}
 
-	public partsNames partToDefend(String mockInput) {
-		// TODO Auto-generated method stub
-		return partsNames.LeftArm;
+	public partsNames partToDefend(String input) {
+		if (input.equals("1"))
+			return partsNames.head;
+		if (input.equals("2"))
+			return partsNames.body;
+		if (input.equals("3"))
+			return partsNames.LeftLeg;
+		if (input.equals("4"))
+			return partsNames.RightLeg;
+		if (input.equals("5"))
+			return partsNames.LeftArm;
+		if (input.equals("6"))
+			return partsNames.RightArm;
+		else
+			throw new RuntimeException("ERROR");
 	}
 
 }

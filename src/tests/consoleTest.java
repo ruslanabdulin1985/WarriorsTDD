@@ -43,7 +43,7 @@ public class consoleTest {
 	void WhenWantsToPlayThenTrue() {
 		Console sut = new Console();
 		String mockInput = "p";
-		boolean actual = sut.wantsToQuit(mockInput);
+		boolean actual = sut.wantsToPlay(mockInput);
 		assertTrue(actual);
 	}
 	
