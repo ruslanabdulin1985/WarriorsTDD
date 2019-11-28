@@ -41,4 +41,9 @@ public class Console {
 		System.out.println("Enter p to Play");
 	}
 
+	public partsNames partToDefend(String mockInput) {
+		// TODO Auto-generated method stub
+		return partsNames.LeftArm;
+	}
+
 }
