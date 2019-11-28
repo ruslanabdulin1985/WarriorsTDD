@@ -11,6 +11,78 @@ import static org.mockito.Mockito.*;
 
 class warriorTest {
    
+	@Test
+	void whenGetPartRightHandThanReturnRightHand() {
+		Part sharedPart = mock(Part.class);
+		Part sharedPartTarget = mock(Part.class);
+	
+		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPartTarget,sharedPart );
+		
+		Part actual = sut.getPartRArm();
+		Part expected = sharedPartTarget;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void whenGetPartLeftHandThanReturnLeftHand() {
+		Part sharedPart = mock(Part.class);
+		Part sharedPartTarget = mock(Part.class);
+	
+		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPart, sharedPart, sharedPartTarget );
+		
+		Part actual = sut.getPartLArm();
+		Part expected = sharedPartTarget;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void whenGetPartLeftLegThanReturnLeftLeg() {
+		Part sharedPart = mock(Part.class);
+		Part sharedPartTarget = mock(Part.class);
+	
+		Warrior sut = new Warrior(sharedPart, sharedPart, sharedPart, sharedPartTarget, sharedPart, sharedPart );
+		
+		Part actual = sut.getPartLLeg();
+		Part expected = sharedPartTarget;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void whenGetPartRightLegThanReturnRightLeg() {
+		Part sharedPart = mock(Part.class);
+		Part sharedPartTarget = mock(Part.class);
+	
+		Warrior sut = new Warrior(sharedPart, sharedPart,sharedPartTarget, sharedPart,  sharedPart, sharedPart );
+		
+		Part actual = sut.getPartRLeg();
+		Part expected = sharedPartTarget;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void whenGetPartBodyThanReturnBody() {
+		Part sharedPart = mock(Part.class);
+		Part sharedPartTarget = mock(Part.class);
+	
+		Warrior sut = new Warrior(sharedPart,sharedPartTarget, sharedPart,  sharedPart,  sharedPart, sharedPart );
+		
+		Part actual = sut.getPartBody();
+		Part expected = sharedPartTarget;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void whenGetPartHeadThanReturnHead() {
+		Part sharedPart = mock(Part.class);
+		Part sharedPartTarget = mock(Part.class);
+	
+		Warrior sut = new Warrior(sharedPart,sharedPartTarget, sharedPart,  sharedPart,  sharedPart, sharedPart );
+		
+		Part actual = sut.getPartHead();
+		Part expected = sharedPartTarget;
+		assertEquals(expected, actual);
+	}
+	
     
 	@Test
 	void whenGetRightHandThanReturn10() {
