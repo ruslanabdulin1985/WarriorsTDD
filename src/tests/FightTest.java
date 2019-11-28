@@ -1,6 +1,7 @@
 package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.atLeast;
+import static org.mockito.ArgumentMatcher.*;
 import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -50,6 +51,8 @@ public class FightTest {
 		
 		Warrior enemy = mock(Warrior.class);
 		Warrior warrior = mock(Warrior.class);
+		when(warrior.getPartBody()).thenReturn(somePart1);
+		when(warrior.getPartHead()).thenReturn(somePart2);
 		
 		Fight sut = new Fight(warrior, enemy);
 		sut.setBlockWarrior(partsNames.body, partsNames.head);

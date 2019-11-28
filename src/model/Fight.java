@@ -20,8 +20,8 @@ public class Fight {
 	}
 
 	public void setBlockWarrior(partsNames part1, partsNames part2) {
-		Part pt1 = new Part(20);
-		Part pt2 = new Part(20);
+		Part pt1 = partToName(part1, player);
+		Part pt2 = partToName(part2, player);
 		this.player.block(pt1, pt2);
 	}
 	

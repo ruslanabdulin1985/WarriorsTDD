@@ -94,19 +94,19 @@ public class Warrior{
 	}
 	
 	public Part getPartRLeg(){
-		return body;
+		return rightLeg;
 	}
 	
 	public Part getPartRArm(){
-		return body;
+		return rightArm;
 	}
 	
 	public Part getPartLLeg(){
-		return body;
+		return leftLeg;
 	}
 	
 	public Part getPartLArm(){
-		return body;
+		return leftArm;
 	}
 	
 	public Part getPartBody(){

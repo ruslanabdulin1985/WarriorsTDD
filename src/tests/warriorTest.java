@@ -76,7 +76,7 @@ class warriorTest {
 		Part sharedPart = mock(Part.class);
 		Part sharedPartTarget = mock(Part.class);
 	
-		Warrior sut = new Warrior(sharedPart,sharedPartTarget, sharedPart,  sharedPart,  sharedPart, sharedPart );
+		Warrior sut = new Warrior(sharedPartTarget, sharedPart, sharedPart,  sharedPart,  sharedPart, sharedPart );
 		
 		Part actual = sut.getPartHead();
 		Part expected = sharedPartTarget;
