@@ -1,23 +1,11 @@
 package tests;
 
-import static org.mockito.Mockito.mock;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.atMost;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
-
-import controller.Control;
-import controller.Control.statuses;
-import model.Fight;
-import model.Part;
-import model.Warrior;
 import model.partsNames;
 import view.Console;
 

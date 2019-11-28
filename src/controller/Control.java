@@ -30,7 +30,10 @@ public class Control {
 
 	public void run(Fight game, Console con) {
 		
-		if (!status.equals(statuses.mainMenu) && con.wantsToQuit("q")) {
+		con.showMainMenu();
+		String userInput = con.getInput();
+		
+		if (con.wantsToQuit("q")) {
 			game.quit();
 		}
 		

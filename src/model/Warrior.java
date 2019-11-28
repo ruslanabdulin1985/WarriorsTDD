@@ -93,6 +93,22 @@ public class Warrior{
 		return !allive;
 	}
 	
+	public Part getPartRLeg(){
+		return body;
+	}
+	
+	public Part getPartRArm(){
+		return body;
+	}
+	
+	public Part getPartLLeg(){
+		return body;
+	}
+	
+	public Part getPartLArm(){
+		return body;
+	}
+	
 	public Part getPartBody(){
 		return body;
 	}

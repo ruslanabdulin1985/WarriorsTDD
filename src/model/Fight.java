@@ -20,9 +20,26 @@ public class Fight {
 	}
 
 	public void setBlockWarrior(partsNames part1, partsNames part2) {
-		Part partfake1 = new Part(20);
-		Part partfake2 = new Part(20);
-		this.player.block(partfake1, partfake2);
+		Part pt1 = new Part(20);
+		Part pt2 = new Part(20);
+		this.player.block(pt1, pt2);
+	}
+	
+	private Part partToName(partsNames pn, Warrior wr) {
+	if (pn.equals(partsNames.head))
+		return wr.getPartHead();
+	if (pn.equals(partsNames.body))
+		return wr.getPartBody();
+	if (pn.equals(partsNames.LeftArm))
+		return wr.getPartLArm();
+	if (pn.equals(partsNames.RightArm))
+		return wr.getPartRArm();
+	if (pn.equals(partsNames.LeftLeg))
+		return wr.getPartLLeg();
+	if (pn.equals(partsNames.RightLeg))
+		return wr.getPartRLeg();
+	else
+		throw new RuntimeException("Error");
 	}
 	
 	public void setBlockEnemy() {
