@@ -92,7 +92,15 @@ public class Warrior{
 	public boolean isDead() {
 		return !allive;
 	}
-
+	
+	public Part getPartBody(){
+		return body;
+	}
+	
+	public Part getPartHead(){
+		return head;
+	}
+	
 	public void block(Part part1, Part part2) {
 		part1.setBlock();
 		part2.setBlock();

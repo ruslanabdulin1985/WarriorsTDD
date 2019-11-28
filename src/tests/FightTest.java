@@ -13,6 +13,7 @@ import org.mockito.internal.verification.AtMost;
 import model.Fight;
 import model.Part;
 import model.Warrior;
+import model.partsNames;
 
 
 
@@ -51,7 +52,7 @@ public class FightTest {
 		Warrior warrior = mock(Warrior.class);
 		
 		Fight sut = new Fight(warrior, enemy);
-		sut.setBlockWarrior(somePart1, somePart2);
+		sut.setBlockWarrior(partsNames.body, partsNames.head);
 		
 		verify(warrior).block(somePart1, somePart2);
 

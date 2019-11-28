@@ -1,4 +1,5 @@
 package model;
+import model.partsNames;
 
 public class Fight {
 	
@@ -18,8 +19,10 @@ public class Fight {
 		this.player.strike(enemy, 5);
 	}
 
-	public void setBlockWarrior(Part part1, Part part2) {
-		this.player.block(part1, part2);
+	public void setBlockWarrior(partsNames part1, partsNames part2) {
+		Part partfake1 = new Part(20);
+		Part partfake2 = new Part(20);
+		this.player.block(partfake1, partfake2);
 	}
 	
 	public void setBlockEnemy() {
@@ -36,6 +39,14 @@ public class Fight {
 
 	public void quit() {
 		
+	}
+
+	public Warrior getPlayer() {
+		return this.player;
+	}
+
+	public Warrior getEnemy() {
+		return this.enemy;
 	}
 
 }

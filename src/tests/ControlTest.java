@@ -16,6 +16,7 @@ import controller.Control.statuses;
 import model.Fight;
 import model.Part;
 import model.Warrior;
+import model.partsNames;
 import view.Console;
 
 public class ControlTest {
@@ -24,7 +25,7 @@ public class ControlTest {
 	void whenStateMainMenuAndWantsToPlayThenStatusEqualsChooseDefendParts() {
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
-		when(con.wantsToPlay()).thenReturn(true);
+		when(con.wantsToPlay("p")).thenReturn(true);
 		
 		Control sut = new Control();
 		sut.setStatus(Control.statuses.mainMenu);
@@ -56,8 +57,8 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionThenAttack() {
-		Part somePart = mock(Part.class);
-		Part[] partsToReturn = {somePart, somePart};
+		
+		partsNames [] partsToReturn = {partsNames.body, partsNames.head};
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		Control sut = new Control();
@@ -71,8 +72,8 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionThenDefend() {
-		Part somePart = mock(Part.class);
-		Part[] partsToReturn = {somePart, somePart};
+		
+		partsNames[] partsToReturn = {partsNames.body, partsNames.head};
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		Control sut = new Control();
@@ -85,8 +86,8 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionThenEnemyDefend() {
-		Part somePart = mock(Part.class);
-		Part[] partsToReturn = {somePart, somePart};
+		
+		partsNames[] partsToReturn = {partsNames.body, partsNames.head};
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		Control sut = new Control();
@@ -100,9 +101,11 @@ public class ControlTest {
 	
 	@Test
 	void whenStatusActionAndDefendPartsSetThenDefend() {
-		Part somePart = mock(Part.class);
-		Part[] partsToReturn = {somePart, somePart};
-		Fight game = mock(Fight.class);
+		
+		Part somePart1 = mock(Part.class);
+		Part somePart2 = mock(Part.class);
+		
+		partsNames[] partsToReturn = {partsNames.body, partsNames.head};		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		when(con.getDefendParts()).thenReturn(partsToReturn);
 		Control sut = new Control();
@@ -110,14 +113,14 @@ public class ControlTest {
 		sut.setStatus(statuses.action);
 		sut.run(game, con);
 		
-		verify(game).setBlockWarrior(somePart, somePart);
+		verify(game).setBlockWarrior(partsToReturn[0], partsToReturn[1]);
 	}
 	
 	@Test
 	void whenWantsToQuitThenQuit() {
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
-		when(con.wantsToQuit()).thenReturn(true);
+		when(con.wantsToQuit("q")).thenReturn(true);
 		Control sut = new Control();
 		
 		sut.run(game, con);

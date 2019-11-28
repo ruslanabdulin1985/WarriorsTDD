@@ -1,6 +1,7 @@
 package controller;
 
 import model.Fight;
+import model.partsNames;
 import model.Part;
 import view.Console;
 
@@ -28,23 +29,24 @@ public class Control {
 	}
 
 	public void run(Fight game, Console con) {
-		if (con.wantsToQuit()) {
+		
+		if (!status.equals(statuses.mainMenu) && con.wantsToQuit("q")) {
 			game.quit();
 		}
 		
-		else if (status.equals(statuses.mainMenu) && con.wantsToPlay()) {
+		else if (status.equals(statuses.mainMenu)) {
+			con.showMainMenu();
 			this.status = statuses.action;
 		}
 		
 		else if(status.equals(statuses.action)) {
-			Part[] partsToBlock = con.getDefendParts();
 			
-			game.setBlockWarrior(partsToBlock[0], partsToBlock[1]);
+			game.setBlockWarrior(partsNames.body, partsNames.head);
 			game.setBlockEnemy();
 			
 			game.atack();
 			game.defend();
-			con.renew();
+			con.renew(game.getPlayer(), game.getEnemy());
 		}
 		
 	}
