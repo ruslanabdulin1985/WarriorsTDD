@@ -32,6 +32,16 @@ public class Console {
 		System.out.println("YOU\t\tENEMY");
 		System.out.println("\tHEAD" );
 		System.out.println(player.getHead() + "\t\t" + enemy.getHead());
+		System.out.println("\tBODY" );
+		System.out.println(player.getBody() + "\t\t" + enemy.getBody());
+		System.out.println("\tLEFT HAND" );
+		System.out.println(player.getleftArm() + "\t\t" + enemy.getleftArm());
+		System.out.println("\tRIGT HAND" );
+		System.out.println(player.getRightArm() + "\t\t" + enemy.getRightArm());
+		System.out.println("\tLEFT LEG" );
+		System.out.println(player.getleftLeg() + "\t\t" + enemy.getleftLeg());
+		System.out.println("\tRIGHT LEG" );
+		System.out.println(player.getRightLeg() + "\t\t" + enemy.getRightLeg());
 		
 	}
 	
@@ -48,8 +58,10 @@ public class Console {
 	
 	private void showPartsMenu() {
 		int i=0;
-		for(partsNames n : partsNames.values())
-			System.out.println("" + i + " " + n); i++;
+		for(partsNames n : partsNames.values()) {
+			System.out.println("" + i + " " + n);
+			i++;
+		}
 	}
 	
 	

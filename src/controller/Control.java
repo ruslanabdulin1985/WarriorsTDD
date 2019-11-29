@@ -1,5 +1,7 @@
 package controller;
 
+import org.mockito.exceptions.verification.WantedButNotInvoked;
+
 import model.Fight;
 import model.partsNames;
 import model.Part;
@@ -10,7 +12,7 @@ public class Control {
 	statuses status;
 	
 	public enum statuses{
-		mainMenu, action, 
+		mainMenu, action, ready
 	}
 	
 	
@@ -32,22 +34,26 @@ public class Control {
 		
 		if (status.equals(statuses.mainMenu)) {
 			con.showMainMenu();
-			this.status = statuses.action;
+			String userInput = con.getInput();
+			if(con.wantsToPlay(userInput)){
+				status = statuses.action;
+			}
+			if (con.wantsToQuit(userInput)) {
+				game.quit();
+			}
 		}
 		
-		String userInput = con.getInput();
-		System.out.println(status);
 		
-		if (con.wantsToQuit(userInput)) {
-			game.quit();
-		}
-		
-		else if(status.equals(statuses.action)) {
+		if(status.equals(statuses.action)) {
 			con.renew(game.getPlayer(), game.getEnemy());
 			con.showFirstPartToBlock();
+			String userInput = con.getInput();
 			partsNames firstPartToBlock = con.getPartNameToBlock(userInput);
 			con.showSecondPartToBlock();
-			game.setBlockWarrior(partsNames.body, partsNames.head);
+			userInput = con.getInput();
+			partsNames secondPartToBlock = con.getPartNameToBlock(userInput);
+			
+			game.setBlockWarrior(firstPartToBlock, secondPartToBlock);
 			game.setBlockEnemy();
 			game.atack();
 			game.defend();
