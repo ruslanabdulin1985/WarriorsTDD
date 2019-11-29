@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,71 @@ public class consoleTest {
 		String mockInput = "f";
 		boolean actual = sut.wantsToQuit(mockInput);
 		assertFalse(actual);
+	}
+	
+	@Test
+	void WhenUserInputIs2ThenPartNameToBlockIsBody() {
+		Console sut = new Console();
+		String mockInput = "2";
+		partsNames expeced = partsNames.body;
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		assertEquals(expeced, actual);
+	}
+	
+	@Test
+	void WhenUserInputIs3ThenPartNameToBlockIsLLeg() {
+		Console sut = new Console();
+		String mockInput = "3";
+		partsNames expeced = partsNames.LeftLeg;
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		assertEquals(expeced, actual);
+	}
+	
+	@Test
+	void WhenUserInputIs4ThenPartNameToBlockIsRLeg() {
+		Console sut = new Console();
+		String mockInput = "4";
+		partsNames expeced = partsNames.RightLeg;
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		assertEquals(expeced, actual);
+	}
+	
+	@Test
+	void WhenUserInputIs5ThenPartNameToBlockIsLArm() {
+		Console sut = new Console();
+		String mockInput = "5";
+		partsNames expeced = partsNames.LeftArm;
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		assertEquals(expeced, actual);
+	}
+	
+	@Test
+	void WhenUserInputIs6ThenPartNameToBlockIsRArm() {
+		Console sut = new Console();
+		String mockInput = "6";
+		partsNames expeced = partsNames.RightArm;
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		assertEquals(expeced, actual);
+	}
+	
+	@Test
+	void WhenUserInputIsRandomStringThenReturnRuntimeException() {
+		Console sut = new Console();
+		String mockInput = "RandomString";
+	
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		 assertThrows(RuntimeException.class, () -> {
+		        sut.getPartNameToBlock(mockInput);
+		    });
+	}
+
+	@Test
+	void WhenUserInputIs1ThenPartNameToBlockIsHead() {
+		Console sut = new Console();
+		String mockInput = "1";
+		partsNames expeced = partsNames.head;
+		partsNames actual = sut.getPartNameToBlock(mockInput);
+		assertEquals(expeced, actual);
 	}
 	
 	@Test
