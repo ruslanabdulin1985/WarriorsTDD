@@ -57,6 +57,10 @@ public class Control {
 			game.setBlockEnemy();
 			game.atack();
 			game.defend();
+			if (game.isPlayerWin())
+				con.showWonScreen();
+			else if (game.isGameOver())
+				con.showLostScreen();
 		}
 		
 	}

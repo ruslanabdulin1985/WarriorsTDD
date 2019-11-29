@@ -22,10 +22,12 @@ import view.Console;
 public class ControlTest {
 	
 	@Test
-	void whenStateMainMenuAndWantsToPlayThenStatusEqualsChooseDefendParts() {
+	void whenStateMainMenuAndWantsToPlayThenStatusEqualsAction() {
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
+		when(con.getInput()).thenReturn("p");
 		when(con.wantsToPlay("p")).thenReturn(true);
+		
 		
 		Control sut = new Control();
 		sut.setStatus(Control.statuses.mainMenu);
@@ -131,8 +133,12 @@ public class ControlTest {
 		Part somePart1 = mock(Part.class);
 		Part somePart2 = mock(Part.class);
 		
-		partsNames[] partsToReturn = {partsNames.body, partsNames.head};		Fight game = mock(Fight.class);
+		partsNames[] partsToReturn = {partsNames.body, partsNames.body};		
+		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
+		
+		when(con.getPartNameToBlock(null)).thenReturn(partsNames.body);
+		
 		when(con.getDefendParts()).thenReturn(partsToReturn);
 		Control sut = new Control();
 		
@@ -146,6 +152,7 @@ public class ControlTest {
 	void whenWantsToQuitThenQuit() {
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
+		when(con.getInput()).thenReturn("q");
 		when(con.wantsToQuit("q")).thenReturn(true);
 		Control sut = new Control();
 		

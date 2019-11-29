@@ -108,6 +108,16 @@ public class Console {
 			
 	}
 
+	public void showWonScreen() {
+		System.out.println("!!!\tYou WON!\t!!!");
+		
+	}
+	
+	public void showLostScreen() {
+		System.out.println("!!!\tYou LOST!\t!!!");
+		
+	}
+	
 
 
 }
