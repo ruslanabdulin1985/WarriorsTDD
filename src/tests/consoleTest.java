@@ -29,47 +29,47 @@ public class consoleTest {
 	}
 	
 	@Test
-	void WhenUserInputIs2ThenPartNameToBlockIsBody() {
+	void WhenUserInputIs1ThenPartNameToBlockIsBody() {
+		Console sut = new Console();
+		String mockInput = "1";
+		partsNames expeced = partsNames.body;
+		partsNames actual = sut.partToDefend(mockInput);
+		assertEquals(expeced, actual);
+	}
+	
+	@Test
+	void WhenUserInputIs2ThenPartNameToBlockIsLLeg() {
 		Console sut = new Console();
 		String mockInput = "2";
-		partsNames expeced = partsNames.body;
-		partsNames actual = sut.getPartNameToBlock(mockInput);
+		partsNames expeced = partsNames.LeftLeg;
+		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expeced, actual);
 	}
 	
 	@Test
-	void WhenUserInputIs3ThenPartNameToBlockIsLLeg() {
+	void WhenUserInputIs3ThenPartNameToBlockIsRLeg() {
 		Console sut = new Console();
 		String mockInput = "3";
-		partsNames expeced = partsNames.LeftLeg;
-		partsNames actual = sut.getPartNameToBlock(mockInput);
+		partsNames expeced = partsNames.RightLeg;
+		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expeced, actual);
 	}
 	
 	@Test
-	void WhenUserInputIs4ThenPartNameToBlockIsRLeg() {
+	void WhenUserInputIs4ThenPartNameToBlockIsLArm() {
 		Console sut = new Console();
 		String mockInput = "4";
-		partsNames expeced = partsNames.RightLeg;
-		partsNames actual = sut.getPartNameToBlock(mockInput);
+		partsNames expeced = partsNames.LeftArm;
+		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expeced, actual);
 	}
 	
 	@Test
-	void WhenUserInputIs5ThenPartNameToBlockIsLArm() {
+	void WhenUserInputIs5ThenPartNameToBlockIsRArm() {
 		Console sut = new Console();
 		String mockInput = "5";
-		partsNames expeced = partsNames.LeftArm;
-		partsNames actual = sut.getPartNameToBlock(mockInput);
-		assertEquals(expeced, actual);
-	}
-	
-	@Test
-	void WhenUserInputIs6ThenPartNameToBlockIsRArm() {
-		Console sut = new Console();
-		String mockInput = "6";
 		partsNames expeced = partsNames.RightArm;
-		partsNames actual = sut.getPartNameToBlock(mockInput);
+		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expeced, actual);
 	}
 	
@@ -79,16 +79,16 @@ public class consoleTest {
 		String mockInput = "RandomString";
 	
 		 assertThrows(RuntimeException.class, () -> {
-		        sut.getPartNameToBlock(mockInput);
+		        sut.partToDefend(mockInput);
 		    });
 	}
 
 	@Test
 	void WhenUserInputIs1ThenPartNameToBlockIsHead() {
 		Console sut = new Console();
-		String mockInput = "1";
+		String mockInput = "0";
 		partsNames expeced = partsNames.head;
-		partsNames actual = sut.getPartNameToBlock(mockInput);
+		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expeced, actual);
 	}
 	

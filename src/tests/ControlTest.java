@@ -137,7 +137,7 @@ public class ControlTest {
 		Fight game = mock(Fight.class);
 		Console con = mock(Console.class);
 		
-		when(con.getPartNameToBlock(null)).thenReturn(partsNames.body);
+		when(con.partToDefend(null)).thenReturn(partsNames.body);
 		
 		when(con.getDefendParts()).thenReturn(partsToReturn);
 		Control sut = new Control();

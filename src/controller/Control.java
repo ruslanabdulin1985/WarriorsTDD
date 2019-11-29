@@ -48,10 +48,10 @@ public class Control {
 			con.renew(game.getPlayer(), game.getEnemy());
 			con.showFirstPartToBlock();
 			String userInput = con.getInput();
-			partsNames firstPartToBlock = con.getPartNameToBlock(userInput);
+			partsNames firstPartToBlock = con.partToDefend(userInput);
 			con.showSecondPartToBlock();
 			userInput = con.getInput();
-			partsNames secondPartToBlock = con.getPartNameToBlock(userInput);
+			partsNames secondPartToBlock = con.partToDefend(userInput);
 			
 			game.setBlockWarrior(firstPartToBlock, secondPartToBlock);
 			game.setBlockEnemy();

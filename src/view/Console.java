@@ -89,25 +89,7 @@ public class Console {
 		else
 			throw new RuntimeException("ERROR");
 	}
-
-	public partsNames getPartNameToBlock(String userInput) {
-		if (userInput.equals("1"))	
-			return partsNames.head;
-		else if (userInput.equals("2"))	
-			return partsNames.body;
-		else if (userInput.equals("3"))	
-			return partsNames.LeftLeg;
-		else if (userInput.equals("4"))	
-			return partsNames.RightLeg;
-		else if (userInput.equals("5"))	
-			return partsNames.LeftArm;
-		else if (userInput.equals("6"))	
-			return partsNames.RightArm;
-		else
-			throw new RuntimeException("Wrong Input");
-			
-	}
-
+	
 	public void showWonScreen() {
 		System.out.println("!!!\tYou WON!\t!!!");
 		
