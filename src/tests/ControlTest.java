@@ -71,6 +71,32 @@ public class ControlTest {
 	}
 	
 	@Test
+	void whenStatusActionThenRunIfPlayerWin() {
+		
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		Control sut = new Control();
+		
+		sut.setStatus(statuses.action);
+		sut.run(game, con);
+		
+		verify(game).isPlayerWin();
+	}
+	
+	@Test
+	void whenStatusActionThenRunIfGameOver() {
+		
+		Fight game = mock(Fight.class);
+		Console con = mock(Console.class);
+		Control sut = new Control();
+		
+		sut.setStatus(statuses.action);
+		sut.run(game, con);
+		
+		verify(game).isGameOver();
+	}
+	
+	@Test
 	void whenStatusActionThenDefend() {
 		
 		partsNames[] partsToReturn = {partsNames.body, partsNames.head};
