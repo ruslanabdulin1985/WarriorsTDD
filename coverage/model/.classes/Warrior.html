@@ -1,0 +1,218 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Warrior</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Warrior (model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Warrior</td>
+<td class="coverageStat">
+  <span class="percent">
+    95%
+  </span>
+  <span class="absValue">
+    (19/ 20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.7%
+  </span>
+  <span class="absValue">
+    (42/ 43)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Warrior$$EnhancerByMockitoWithCGLIB$$5191e12c</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    95%
+  </span>
+  <span class="absValue">
+    (19/ 20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.7%
+  </span>
+  <span class="absValue">
+    (42/ 43)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.Random;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;public class Warrior{
+<i>6</i>&nbsp;	
+<i>7</i>&nbsp;	boolean allive;
+<i>8</i>&nbsp;	Part [] parts;
+<i>9</i>&nbsp;	protected Part rightLeg;
+<i>10</i>&nbsp;	protected Part leftLeg;
+<i>11</i>&nbsp;	protected Part leftArm;
+<i>12</i>&nbsp;	protected Part rightArm;
+<i>13</i>&nbsp;	protected Part body;
+<i>14</i>&nbsp;	protected Part head;
+<i>15</i>&nbsp;	
+<b class="fc"><i>16</i>&nbsp;	public Warrior(Part Head, Part Body, Part RLeg, Part LLeg, Part RArm, Part LArm) {</b>
+<b class="fc"><i>17</i>&nbsp;	this.rightLeg = RLeg;</b>
+<b class="fc"><i>18</i>&nbsp;	this.leftLeg = LLeg;</b>
+<b class="fc"><i>19</i>&nbsp;	this.leftArm = LArm;</b>
+<b class="fc"><i>20</i>&nbsp;	this.rightArm = RArm;</b>
+<b class="fc"><i>21</i>&nbsp;	this.body = Body;</b>
+<b class="fc"><i>22</i>&nbsp;	this.head = Head;</b>
+<b class="fc"><i>23</i>&nbsp;	Part[] ToBeparts = {head, body, leftArm, leftLeg, rightArm, rightLeg};</b>
+<b class="fc"><i>24</i>&nbsp;	parts = ToBeparts;</b>
+<b class="fc"><i>25</i>&nbsp;	this.allive = checkIfAllive();</b>
+<b class="fc"><i>26</i>&nbsp;	}</b>
+<i>27</i>&nbsp;	
+<i>28</i>&nbsp;	private boolean checkIfAllive() {
+<b class="fc"><i>29</i>&nbsp;		boolean toReturn = true;</b>
+<b class="fc"><i>30</i>&nbsp;		for (Part p : parts) {</b>
+<b class="fc"><i>31</i>&nbsp;			if (p.getHealth()==0)</b>
+<b class="fc"><i>32</i>&nbsp;				toReturn = false;</b>
+<i>33</i>&nbsp;		}
+<b class="fc"><i>34</i>&nbsp;		return toReturn;</b>
+<i>35</i>&nbsp;	}
+<i>36</i>&nbsp;	
+<i>37</i>&nbsp;	public Part getRandomPart() {
+<b class="fc"><i>38</i>&nbsp;		Random rnd = new Random();</b>
+<b class="fc"><i>39</i>&nbsp;		return parts[rnd.nextInt(6)];</b>
+<i>40</i>&nbsp;	}
+<i>41</i>&nbsp;	
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;	public boolean hit(int damage) {
+<b class="fc"><i>44</i>&nbsp;		getRandomPart().hit(damage);</b>
+<b class="fc"><i>45</i>&nbsp;		this.allive = checkIfAllive();</b>
+<b class="fc"><i>46</i>&nbsp;		cacelBlock();</b>
+<b class="fc"><i>47</i>&nbsp;		return true;</b>
+<i>48</i>&nbsp;		
+<i>49</i>&nbsp;	}
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;	private void cacelBlock() {
+<b class="fc"><i>52</i>&nbsp;		for (Part p : parts)</b>
+<b class="fc"><i>53</i>&nbsp;			p.cancelBlock();</b>
+<b class="fc"><i>54</i>&nbsp;	}</b>
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;	
+<i>57</i>&nbsp;	public boolean strike(Warrior c, int damage) {
+<b class="fc"><i>58</i>&nbsp;		c.hit(damage);</b>
+<b class="fc"><i>59</i>&nbsp;		return true;</b>
+<i>60</i>&nbsp;	}
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;	
+<i>63</i>&nbsp;	public int getRightLeg() {
+<b class="nc"><i>64</i>&nbsp;		return this.rightLeg.getHealth();</b>
+<i>65</i>&nbsp;	}
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;	
+<i>68</i>&nbsp;	public int getleftLeg() {
+<b class="fc"><i>69</i>&nbsp;		return this.leftLeg.getHealth();</b>
+<i>70</i>&nbsp;	}
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;	
+<i>73</i>&nbsp;	public int getleftArm() {
+<b class="fc"><i>74</i>&nbsp;		return this.leftArm.getHealth();</b>
+<i>75</i>&nbsp;	}
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;	
+<i>78</i>&nbsp;	public int getRightArm() {
+<b class="fc"><i>79</i>&nbsp;		return this.rightArm.getHealth();</b>
+<i>80</i>&nbsp;	}
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;	
+<i>83</i>&nbsp;	public int getBody() {
+<b class="fc"><i>84</i>&nbsp;		return this.body.getHealth();</b>
+<i>85</i>&nbsp;	}
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;	
+<i>88</i>&nbsp;	public int getHead() {
+<b class="fc"><i>89</i>&nbsp;		return this.head.getHealth();</b>
+<i>90</i>&nbsp;	}
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;	public boolean isDead() {
+<b class="fc"><i>93</i>&nbsp;		return !allive;</b>
+<i>94</i>&nbsp;	}
+<i>95</i>&nbsp;	
+<i>96</i>&nbsp;	public Part getPartRLeg(){
+<b class="fc"><i>97</i>&nbsp;		return rightLeg;</b>
+<i>98</i>&nbsp;	}
+<i>99</i>&nbsp;	
+<i>100</i>&nbsp;	public Part getPartRArm(){
+<b class="fc"><i>101</i>&nbsp;		return rightArm;</b>
+<i>102</i>&nbsp;	}
+<i>103</i>&nbsp;	
+<i>104</i>&nbsp;	public Part getPartLLeg(){
+<b class="fc"><i>105</i>&nbsp;		return leftLeg;</b>
+<i>106</i>&nbsp;	}
+<i>107</i>&nbsp;	
+<i>108</i>&nbsp;	public Part getPartLArm(){
+<b class="fc"><i>109</i>&nbsp;		return leftArm;</b>
+<i>110</i>&nbsp;	}
+<i>111</i>&nbsp;	
+<i>112</i>&nbsp;	public Part getPartBody(){
+<b class="fc"><i>113</i>&nbsp;		return body;</b>
+<i>114</i>&nbsp;	}
+<i>115</i>&nbsp;	
+<i>116</i>&nbsp;	public Part getPartHead(){
+<b class="fc"><i>117</i>&nbsp;		return head;</b>
+<i>118</i>&nbsp;	}
+<i>119</i>&nbsp;	
+<i>120</i>&nbsp;	public void block(Part part1, Part part2) {
+<b class="fc"><i>121</i>&nbsp;		part1.setBlock();</b>
+<b class="fc"><i>122</i>&nbsp;		part2.setBlock();</b>
+<b class="fc"><i>123</i>&nbsp;	}</b>
+<i>124</i>&nbsp;	
+<i>125</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-11-29 08:00</div>
+</div>
+</body>
+</html>

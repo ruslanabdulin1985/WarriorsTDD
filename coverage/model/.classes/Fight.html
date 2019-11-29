@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Fight</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Fight (model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Fight</td>
+<td class="coverageStat">
+  <span class="percent">
+    72.7%
+  </span>
+  <span class="absValue">
+    (8/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.8%
+  </span>
+  <span class="absValue">
+    (28/ 33)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Fight$$EnhancerByMockitoWithCGLIB$$a88bd4a</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    72.7%
+  </span>
+  <span class="absValue">
+    (8/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    84.8%
+  </span>
+  <span class="absValue">
+    (28/ 33)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package model;
+<i>2</i>&nbsp;import model.partsNames;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;public class Fight {
+<i>5</i>&nbsp;	
+<i>6</i>&nbsp;	Warrior player;
+<i>7</i>&nbsp;	Warrior enemy; 
+<i>8</i>&nbsp;
+<b class="fc"><i>9</i>&nbsp;	public Fight(Warrior p_warrior, Warrior e_warrior) {</b>
+<b class="fc"><i>10</i>&nbsp;		this.player = p_warrior;</b>
+<b class="fc"><i>11</i>&nbsp;		this.enemy = e_warrior;</b>
+<b class="fc"><i>12</i>&nbsp;	}</b>
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;	public void defend() {
+<b class="fc"><i>15</i>&nbsp;		this.enemy.strike(this.player, 5);</b>
+<b class="fc"><i>16</i>&nbsp;	}</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;	public void atack() {
+<b class="fc"><i>19</i>&nbsp;		this.player.strike(enemy, 5);</b>
+<b class="fc"><i>20</i>&nbsp;	}</b>
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;	public void setBlockWarrior(partsNames part1, partsNames part2) {
+<b class="fc"><i>23</i>&nbsp;		Part pt1 = partToName(part1, player);</b>
+<b class="fc"><i>24</i>&nbsp;		Part pt2 = partToName(part2, player);</b>
+<b class="fc"><i>25</i>&nbsp;		this.player.block(pt1, pt2);</b>
+<b class="fc"><i>26</i>&nbsp;	}</b>
+<i>27</i>&nbsp;	
+<i>28</i>&nbsp;	private Part partToName(partsNames pn, Warrior wr) {
+<b class="fc"><i>29</i>&nbsp;	if (pn.equals(partsNames.head))</b>
+<b class="fc"><i>30</i>&nbsp;		return wr.getPartHead();</b>
+<b class="fc"><i>31</i>&nbsp;	if (pn.equals(partsNames.body))</b>
+<b class="fc"><i>32</i>&nbsp;		return wr.getPartBody();</b>
+<b class="fc"><i>33</i>&nbsp;	if (pn.equals(partsNames.LeftArm))</b>
+<b class="fc"><i>34</i>&nbsp;		return wr.getPartLArm();</b>
+<b class="fc"><i>35</i>&nbsp;	if (pn.equals(partsNames.RightArm))</b>
+<b class="fc"><i>36</i>&nbsp;		return wr.getPartRArm();</b>
+<b class="fc"><i>37</i>&nbsp;	if (pn.equals(partsNames.LeftLeg))</b>
+<b class="fc"><i>38</i>&nbsp;		return wr.getPartLLeg();</b>
+<b class="fc"><i>39</i>&nbsp;	if (pn.equals(partsNames.RightLeg))</b>
+<b class="fc"><i>40</i>&nbsp;		return wr.getPartRLeg();</b>
+<i>41</i>&nbsp;	else
+<b class="nc"><i>42</i>&nbsp;		throw new RuntimeException(&quot;Error&quot;);</b>
+<i>43</i>&nbsp;	}
+<i>44</i>&nbsp;	
+<i>45</i>&nbsp;	public void setBlockEnemy() {
+<b class="fc"><i>46</i>&nbsp;		this.enemy.block(enemy.getRandomPart(), enemy.getRandomPart());</b>
+<b class="fc"><i>47</i>&nbsp;	}</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;	public boolean isGameOver() {
+<b class="fc"><i>50</i>&nbsp;		return (this.enemy.isDead() || this.player.isDead());</b>
+<i>51</i>&nbsp;	}
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;	public boolean isPlayerWin() {
+<b class="fc"><i>54</i>&nbsp;		return (this.enemy.isDead() &amp;&amp; !this.player.isDead());</b>
+<i>55</i>&nbsp;	}
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;	public void quit() {
+<b class="nc"><i>58</i>&nbsp;		System.exit(-10);</b>
+<b class="nc"><i>59</i>&nbsp;	}</b>
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;	public Warrior getPlayer() {
+<b class="nc"><i>62</i>&nbsp;		return this.player;</b>
+<i>63</i>&nbsp;	}
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;	public Warrior getEnemy() {
+<b class="nc"><i>66</i>&nbsp;		return this.enemy;</b>
+<i>67</i>&nbsp;	}
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-11-29 08:00</div>
+</div>
+</body>
+</html>

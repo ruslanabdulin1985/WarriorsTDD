@@ -1,11 +1,6 @@
 package tests;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.ArgumentMatcher.*;
-import static org.mockito.Mockito.atMost;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 import org.junit.jupiter.api.Test;
@@ -60,7 +55,41 @@ public class FightTest {
 		verify(warrior).block(somePart1, somePart2);
 
 	}
-	
+
+	@Test
+	void whenSetBlockArmsPlayerBlockIsExectuedOnce() {
+		Part somePart1 = mock(Part.class);
+		Part somePart2 = mock(Part.class);
+
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		when(warrior.getPartLArm()).thenReturn(somePart1);
+		when(warrior.getPartRArm()).thenReturn(somePart2);
+
+		Fight sut = new Fight(warrior, enemy);
+		sut.setBlockWarrior(partsNames.LeftArm, partsNames.RightArm);
+
+		verify(warrior).block(somePart1, somePart2);
+
+	}
+
+	@Test
+	void whenSetBlockLegsPlayerBlockIsExectuedOnce() {
+		Part somePart1 = mock(Part.class);
+		Part somePart2 = mock(Part.class);
+
+		Warrior enemy = mock(Warrior.class);
+		Warrior warrior = mock(Warrior.class);
+		when(warrior.getPartLLeg()).thenReturn(somePart1);
+		when(warrior.getPartRLeg()).thenReturn(somePart2);
+
+		Fight sut = new Fight(warrior, enemy);
+		sut.setBlockWarrior(partsNames.LeftLeg, partsNames.RightLeg);
+
+		verify(warrior).block(somePart1, somePart2);
+
+	}
+
 	@Test
 	void whenSetBlockEnemyBlocIsExecutedOnce() {
 		Part somePart1 = mock(Part.class);

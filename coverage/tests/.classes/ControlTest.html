@@ -1,0 +1,245 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ControlTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">tests</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ControlTest (tests)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ControlTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    45.5%
+  </span>
+  <span class="absValue">
+    (5/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    39.3%
+  </span>
+  <span class="absValue">
+    (33/ 84)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package tests;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import static org.mockito.Mockito.*;
+<i>4</i>&nbsp;import static org.junit.Assert.assertEquals;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import org.junit.jupiter.api.Test;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import controller.Control;
+<i>11</i>&nbsp;import controller.Control.statuses;
+<i>12</i>&nbsp;import model.Fight;
+<i>13</i>&nbsp;import model.Part;
+<i>14</i>&nbsp;import model.Warrior;
+<i>15</i>&nbsp;import model.partsNames;
+<i>16</i>&nbsp;import view.Console;
+<i>17</i>&nbsp;
+<b class="fc"><i>18</i>&nbsp;public class ControlTest {</b>
+<i>19</i>&nbsp;	
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;	@Test
+<i>22</i>&nbsp;	void whenControlCreatedThenStatusEqualsMainMenu() {
+<b class="fc"><i>23</i>&nbsp;		Control sut = new Control();</b>
+<b class="fc"><i>24</i>&nbsp;		Control.statuses actual = sut.getStatus();</b>
+<b class="fc"><i>25</i>&nbsp;		Control.statuses expected = Control.statuses.mainMenu;</b>
+<b class="fc"><i>26</i>&nbsp;		assertEquals(expected, actual);</b>
+<b class="fc"><i>27</i>&nbsp;	}</b>
+<i>28</i>&nbsp;	
+<i>29</i>&nbsp;	@Test
+<i>30</i>&nbsp;	void whenStatusSetActionThenStatusEqualsAction() {
+<b class="fc"><i>31</i>&nbsp;		Control sut = new Control();</b>
+<b class="fc"><i>32</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="fc"><i>33</i>&nbsp;		Control.statuses actual = sut.getStatus();</b>
+<b class="fc"><i>34</i>&nbsp;		Control.statuses expected = Control.statuses.action;</b>
+<b class="fc"><i>35</i>&nbsp;		assertEquals(expected, actual);</b>
+<b class="fc"><i>36</i>&nbsp;	}</b>
+<i>37</i>&nbsp;	
+<i>38</i>&nbsp;//	@Test
+<i>39</i>&nbsp;	void whenStatusActionThenAttack() {
+<i>40</i>&nbsp;		
+<b class="nc"><i>41</i>&nbsp;		partsNames [] partsToReturn = {partsNames.body, partsNames.head};</b>
+<b class="nc"><i>42</i>&nbsp;		Fight game = mock(Fight.class);</b>
+<b class="nc"><i>43</i>&nbsp;		Console con = mock(Console.class);</b>
+<b class="nc"><i>44</i>&nbsp;		Control sut = new Control();</b>
+<b class="nc"><i>45</i>&nbsp;		when(con.getDefendParts()).thenReturn(partsToReturn);</b>
+<i>46</i>&nbsp;
+<b class="nc"><i>47</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="nc"><i>48</i>&nbsp;		sut.run(game, con);</b>
+<i>49</i>&nbsp;		
+<b class="nc"><i>50</i>&nbsp;		verify(game).atack();</b>
+<b class="nc"><i>51</i>&nbsp;	}</b>
+<i>52</i>&nbsp;	
+<i>53</i>&nbsp;//	@Test
+<i>54</i>&nbsp;	void whenStatusActionThenRunIfPlayerWin() {
+<i>55</i>&nbsp;		
+<b class="nc"><i>56</i>&nbsp;		Fight game = mock(model.Fight.class);</b>
+<b class="nc"><i>57</i>&nbsp;		Console con = mock(Console.class);</b>
+<b class="nc"><i>58</i>&nbsp;		Control sut = new Control();</b>
+<i>59</i>&nbsp;		
+<b class="nc"><i>60</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="nc"><i>61</i>&nbsp;		sut.run(game, con);</b>
+<i>62</i>&nbsp;		
+<b class="nc"><i>63</i>&nbsp;		verify(game).isPlayerWin();</b>
+<b class="nc"><i>64</i>&nbsp;	}</b>
+<i>65</i>&nbsp;	
+<i>66</i>&nbsp;//	@Test
+<i>67</i>&nbsp;	void whenStatusActionThenRunIfGameOver() {
+<i>68</i>&nbsp;		
+<b class="nc"><i>69</i>&nbsp;		Fight game = mock(Fight.class);</b>
+<b class="nc"><i>70</i>&nbsp;		Console con = mock(Console.class);</b>
+<b class="nc"><i>71</i>&nbsp;		Control sut = new Control();</b>
+<i>72</i>&nbsp;		
+<b class="nc"><i>73</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="nc"><i>74</i>&nbsp;		sut.run(game, con);</b>
+<i>75</i>&nbsp;		
+<b class="nc"><i>76</i>&nbsp;		verify(game).isGameOver();</b>
+<b class="nc"><i>77</i>&nbsp;	}</b>
+<i>78</i>&nbsp;	
+<i>79</i>&nbsp;//	@Test
+<i>80</i>&nbsp;	void whenStatusActionThenDefend() {
+<i>81</i>&nbsp;		
+<b class="nc"><i>82</i>&nbsp;		partsNames[] partsToReturn = {partsNames.body, partsNames.head};</b>
+<b class="nc"><i>83</i>&nbsp;		Fight game = mock(Fight.class);</b>
+<b class="nc"><i>84</i>&nbsp;		Console con = mock(Console.class);</b>
+<b class="nc"><i>85</i>&nbsp;		Control sut = new Control();</b>
+<b class="nc"><i>86</i>&nbsp;		when(con.getDefendParts()).thenReturn(partsToReturn);</b>
+<b class="nc"><i>87</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="nc"><i>88</i>&nbsp;		sut.run(game, con);</b>
+<i>89</i>&nbsp;		
+<b class="nc"><i>90</i>&nbsp;		verify(game).defend();</b>
+<b class="nc"><i>91</i>&nbsp;	}</b>
+<i>92</i>&nbsp;	
+<i>93</i>&nbsp;//	@Test
+<i>94</i>&nbsp;	void whenStatusActionThenEnemyDefend() {
+<i>95</i>&nbsp;		
+<b class="nc"><i>96</i>&nbsp;		partsNames[] partsToReturn = {partsNames.body, partsNames.head};</b>
+<b class="nc"><i>97</i>&nbsp;		Fight game = mock(Fight.class);</b>
+<b class="nc"><i>98</i>&nbsp;		Console con = mock(Console.class);</b>
+<b class="nc"><i>99</i>&nbsp;		Control sut = new Control();</b>
+<b class="nc"><i>100</i>&nbsp;		when(con.getDefendParts()).thenReturn(partsToReturn);</b>
+<i>101</i>&nbsp;		
+<b class="nc"><i>102</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="nc"><i>103</i>&nbsp;		sut.run(game, con);</b>
+<i>104</i>&nbsp;		
+<b class="nc"><i>105</i>&nbsp;		verify(game).setBlockEnemy();</b>
+<b class="nc"><i>106</i>&nbsp;	}</b>
+<i>107</i>&nbsp;	
+<i>108</i>&nbsp;	@Test
+<i>109</i>&nbsp;	void whenStatusActionAndDefendPartsSetThenDefend() {
+<i>110</i>&nbsp;		
+<b class="fc"><i>111</i>&nbsp;		Part somePart1 = mock(Part.class);</b>
+<b class="fc"><i>112</i>&nbsp;		Part somePart2 = mock(Part.class);</b>
+<i>113</i>&nbsp;		
+<b class="fc"><i>114</i>&nbsp;		partsNames[] partsToReturn = {partsNames.body, partsNames.body};		</b>
+<b class="fc"><i>115</i>&nbsp;		Fight game = mock(Fight.class);</b>
+<b class="fc"><i>116</i>&nbsp;		Console con = mock(Console.class);</b>
+<i>117</i>&nbsp;		
+<b class="fc"><i>118</i>&nbsp;		when(con.partToDefend(null)).thenReturn(partsNames.body);</b>
+<i>119</i>&nbsp;		
+<b class="fc"><i>120</i>&nbsp;		when(con.getDefendParts()).thenReturn(partsToReturn);</b>
+<b class="fc"><i>121</i>&nbsp;		Control sut = new Control();</b>
+<i>122</i>&nbsp;		
+<b class="fc"><i>123</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<b class="fc"><i>124</i>&nbsp;		sut.run(game, con);</b>
+<i>125</i>&nbsp;		
+<b class="fc"><i>126</i>&nbsp;		verify(game).setBlockWarrior(partsToReturn[0], partsToReturn[1]);</b>
+<b class="fc"><i>127</i>&nbsp;	}</b>
+<i>128</i>&nbsp;	
+<i>129</i>&nbsp;	@Test
+<i>130</i>&nbsp;	void whenWantsToQuitThenQuit() {
+<b class="fc"><i>131</i>&nbsp;		Fight game = mock(Fight.class);</b>
+<b class="fc"><i>132</i>&nbsp;		Console con = mock(Console.class);</b>
+<b class="fc"><i>133</i>&nbsp;		when(con.getInput()).thenReturn(&quot;q&quot;);</b>
+<b class="fc"><i>134</i>&nbsp;		when(con.wantsToQuit(&quot;q&quot;)).thenReturn(true);</b>
+<b class="fc"><i>135</i>&nbsp;		Control sut = new Control();</b>
+<i>136</i>&nbsp;		
+<b class="fc"><i>137</i>&nbsp;		sut.run(game, con);</b>
+<b class="fc"><i>138</i>&nbsp;		sut.setStatus(statuses.action);</b>
+<i>139</i>&nbsp;		
+<b class="fc"><i>140</i>&nbsp;		verify(game).quit();</b>
+<b class="fc"><i>141</i>&nbsp;	}</b>
+<i>142</i>&nbsp;
+<i>143</i>&nbsp;
+<i>144</i>&nbsp;//	@Test
+<i>145</i>&nbsp;	void whenStateMainoPlayThenStatusEqualsAction() {
+<b class="nc"><i>146</i>&nbsp;		Fight game = mock(model.Fight.class);</b>
+<b class="nc"><i>147</i>&nbsp;		Console con = mock(Console.class);</b>
+<i>148</i>&nbsp;//		when(con.getInput()).thenReturn(&quot;p&quot;);
+<i>149</i>&nbsp;//
+<b class="nc"><i>150</i>&nbsp;		when(con.wantsToPlay(anyString())).thenReturn(true);</b>
+<i>151</i>&nbsp;
+<b class="nc"><i>152</i>&nbsp;		Control sut = new Control();</b>
+<b class="nc"><i>153</i>&nbsp;		sut.setStatus(Control.statuses.mainMenu);</b>
+<b class="nc"><i>154</i>&nbsp;		sut.run(game, con);</b>
+<i>155</i>&nbsp;
+<b class="nc"><i>156</i>&nbsp;		Control.statuses actual = sut.getStatus();</b>
+<b class="nc"><i>157</i>&nbsp;		Control.statuses expected = Control.statuses.action;</b>
+<i>158</i>&nbsp;
+<b class="nc"><i>159</i>&nbsp;		assertEquals(expected, actual);</b>
+<b class="nc"><i>160</i>&nbsp;	}</b>
+<i>161</i>&nbsp;
+<i>162</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-11-29 08:00</div>
+</div>
+</body>
+</html>
