@@ -43,24 +43,48 @@ public class Control {
 			}
 		}
 		
-		
 		if(status.equals(statuses.action)) {
 			con.renew(game.getPlayer(), game.getEnemy());
 			con.showFirstPartToBlock();
 			String userInput = con.getInput();
-			partsNames firstPartToBlock = con.partToDefend(userInput);
+			partsNames firstPartToBlock = null;
+			
+			while(firstPartToBlock==null) {
+				try {
+					firstPartToBlock = con.partToDefend(userInput);
+				}
+				catch(RuntimeException e) {
+					System.err.println("Wrong Input! Repeat!");
+					userInput = con.getInput();
+				}
+			}
 			con.showSecondPartToBlock();
 			userInput = con.getInput();
-			partsNames secondPartToBlock = con.partToDefend(userInput);
+			
+			partsNames secondPartToBlock=null;
+			
+			while(secondPartToBlock==null) {
+				try {
+					secondPartToBlock = con.partToDefend(userInput);
+				}
+				catch(RuntimeException e) {
+					System.err.println("Wrong Input! Repeat!");
+					userInput = con.getInput();
+				}
+			}
 			
 			game.setBlockWarrior(firstPartToBlock, secondPartToBlock);
 			game.setBlockEnemy();
 			game.atack();
 			game.defend();
-			if (game.isPlayerWin())
+			if (game.isPlayerWin()) {
+				con.renew(game.getPlayer(), game.getEnemy());
 				con.showWonScreen();
-			else if (game.isGameOver())
+			}
+			else if (game.isGameOver()) {
+				con.renew(game.getPlayer(), game.getEnemy());
 				con.showLostScreen();
+			}
 		}
 		
 	}
