@@ -74,17 +74,17 @@ public class Console {
 	}
 
 	public partsNames partToDefend(String input) {
-		if (input.equals("1"))
+		if (input.equals("0"))
 			return partsNames.head;
-		if (input.equals("2"))
+		if (input.equals("1"))
 			return partsNames.body;
-		if (input.equals("3"))
+		if (input.equals("2"))
 			return partsNames.LeftLeg;
-		if (input.equals("4"))
+		if (input.equals("3"))
 			return partsNames.RightLeg;
-		if (input.equals("5"))
+		if (input.equals("4"))
 			return partsNames.LeftArm;
-		if (input.equals("6"))
+		if (input.equals("5"))
 			return partsNames.RightArm;
 		else
 			throw new RuntimeException("ERROR");

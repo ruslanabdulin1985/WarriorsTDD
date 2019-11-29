@@ -110,18 +110,18 @@ public class consoleTest {
 	
 	
 	@Test
-	void WhenWantsToDefendHeadThen1() {
+	void WhenWantsToDefendHeadThen0() {
 		Console sut = new Console();
-		String mockInput = "1";
+		String mockInput = "0";
 		partsNames expected = partsNames.head;
 		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	void WhenWantsToDefendBodyThen2() {
+	void WhenWantsToDefendBodyThen1() {
 		Console sut = new Console();
-		String mockInput = "2";
+		String mockInput = "1";
 		partsNames expected = partsNames.body;
 		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expected, actual);
@@ -129,36 +129,36 @@ public class consoleTest {
 	
 	
 	@Test
-	void WhenWantsToDefendLLegThen3() {
+	void WhenWantsToDefendLLegThen2() {
 		Console sut = new Console();
-		String mockInput = "3";
+		String mockInput = "2";
 		partsNames expected = partsNames.LeftLeg;
 		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	void WhenWantsToDefendRLegThen4() {
+	void WhenWantsToDefendRLegThen3() {
 		Console sut = new Console();
-		String mockInput = "4";
+		String mockInput = "3";
 		partsNames expected = partsNames.RightLeg;
 		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	void WhenWantsToDefendLArmThen5() {
+	void WhenWantsToDefendLArmThen4() {
 		Console sut = new Console();
-		String mockInput = "5";
+		String mockInput = "4";
 		partsNames expected = partsNames.LeftArm;
 		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expected, actual);
 	}
 	
 	@Test
-	void WhenWantsToDefendRArmThen6() {
+	void WhenWantsToDefendRArmThen5() {
 		Console sut = new Console();
-		String mockInput = "6";
+		String mockInput = "5";
 		partsNames expected = partsNames.RightArm;
 		partsNames actual = sut.partToDefend(mockInput);
 		assertEquals(expected, actual);

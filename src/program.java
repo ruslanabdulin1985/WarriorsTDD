@@ -12,7 +12,7 @@ public class program {
 		Warrior enemy = new Warrior(new Part(10), new Part(10), new Part(10), new Part(10), new Part(10), new Part(10));
 		Fight game = new Fight(player, enemy);
 		Console con = new Console();
-		while(game.isGameOver()) {
+		while(!game.isGameOver()) {
 			ctrl.run(game, con);
 		}
 	}
