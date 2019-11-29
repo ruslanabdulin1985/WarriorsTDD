@@ -55,7 +55,7 @@ public class Fight {
 	}
 
 	public void quit() {
-		
+		System.exit(-10);
 	}
 
 	public Warrior getPlayer() {

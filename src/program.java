@@ -15,7 +15,6 @@ public class program {
 		while(true) {
 			ctrl.run(game, con);
 		}
-
 	}
 
 }

@@ -34,11 +34,31 @@ public class Console {
 		System.out.println(player.getHead() + "\t\t" + enemy.getHead());
 		
 	}
+	
+	public void showFirstPartToBlock() {
+		System.out.println();
+		System.out.println("Choose first part to block: ");
+		showPartsMenu();
+	}
+	
+	public void showSecondPartToBlock() {
+		System.out.println("Choose second part to block: ");
+		showPartsMenu();
+	}
+	
+	private void showPartsMenu() {
+		int i=0;
+		for(partsNames n : partsNames.values())
+			System.out.println("" + i + " " + n); i++;
+	}
+	
+	
 
 	public void showMainMenu() {
 		System.out.println("WELCOME");
 		System.out.println("");
 		System.out.println("Enter p to Play");
+		System.out.println("Enter q to Exit");
 	}
 
 	public partsNames partToDefend(String input) {
@@ -57,5 +77,11 @@ public class Console {
 		else
 			throw new RuntimeException("ERROR");
 	}
+
+	public partsNames getPartNameToBlock(String userInput) {
+			return partsNames.head;
+	}
+
+
 
 }

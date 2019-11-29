@@ -30,26 +30,27 @@ public class Control {
 
 	public void run(Fight game, Console con) {
 		
-		con.showMainMenu();
-		String userInput = con.getInput();
-		
-		if (con.wantsToQuit("q")) {
-			game.quit();
-		}
-		
-		else if (status.equals(statuses.mainMenu)) {
+		if (status.equals(statuses.mainMenu)) {
 			con.showMainMenu();
 			this.status = statuses.action;
 		}
 		
+		String userInput = con.getInput();
+		System.out.println(status);
+		
+		if (con.wantsToQuit(userInput)) {
+			game.quit();
+		}
+		
 		else if(status.equals(statuses.action)) {
-			
+			con.renew(game.getPlayer(), game.getEnemy());
+			con.showFirstPartToBlock();
+			partsNames firstPartToBlock = con.getPartNameToBlock(userInput);
+			con.showSecondPartToBlock();
 			game.setBlockWarrior(partsNames.body, partsNames.head);
 			game.setBlockEnemy();
-			
 			game.atack();
 			game.defend();
-			con.renew(game.getPlayer(), game.getEnemy());
 		}
 		
 	}
