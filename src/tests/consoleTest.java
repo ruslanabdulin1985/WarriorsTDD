@@ -78,7 +78,6 @@ public class consoleTest {
 		Console sut = new Console();
 		String mockInput = "RandomString";
 	
-		partsNames actual = sut.getPartNameToBlock(mockInput);
 		 assertThrows(RuntimeException.class, () -> {
 		        sut.getPartNameToBlock(mockInput);
 		    });
